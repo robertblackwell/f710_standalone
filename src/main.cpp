@@ -5,6 +5,7 @@
 #include <bridge_lib/iobuffer.h>
 #include <bridge_lib/serial_link.h>
 #include <bridge_lib/serial_settings.h>
+#include <rbl/simple_exit_guard.h>
 #include "outputter.h"
 
 using namespace serial_bridge;
@@ -18,42 +19,45 @@ int main()
 /**
  * Create the serial link that the does the communication on the communication thread.
 */
-    auto port_path_list = list_serial_devices();
-    if(port_path_list.size() != 1) {
-        throw std::runtime_error("could not find exactly one suitable serial port path");
-    }
-    auto port = port_path_list[0];
-    int fd = open_serial(port);
-    apply_default_settings(fd);
+    try {
+//        auto port_path_list = list_serial_devices();
+//        if(port_path_list.size() != 1) {
+//            throw std::runtime_error("could not find exactly one suitable serial port path");
+//        }
+//        auto port = port_path_list[0];
+//        int fd = open_serial(port);
+//        apply_default_settings(fd);
 
-    SerialLink serial_link(fd);
-    F710       f710{"js0"};
-    Outputter  outputter{};
+        SerialLink serial_link{};
+        F710       f710{"js0"};
+        Outputter  outputter{};
 
-    /** BEWARE This callback will always run on thread tf710 */
-    std::function<void(int, int)> on_f710_update_callback = [&](int left, int right) -> void {
-        printf("left: %d right: %d\n", left, right);
-        auto iob_uptr = make_robot_message(left, right);
-        auto outputter_msg = make_outputter_message(left, right);
+        /** BEWARE This callback will always run on thread tf710 */
+        std::function<void(int, int)> on_f710_update_callback = [&](int left, int right) -> void {
+            printf("left: %d right: %d\n", left, right);
+            auto iob_uptr = make_robot_message(left, right);
+            auto outputter_msg = make_outputter_message(left, right);
 
-        outputter.send_threadsafe(outputter_msg);
-        serial_link.send_threadsafe(std::move(iob_uptr));
+            outputter.send_threadsafe(outputter_msg);
+            serial_link.send_threadsafe(std::move(iob_uptr));
+        };
+
+        /** BEWARE this function is called on the tserial thread*/
+        SerialLink::OnRecvCallback on_incoming_message = [&](IoBuffer::UPtr iob_uptr) -> void {
+            std::string msg = std::string(iob_uptr->get_first_char_ptr());
+            iob_uptr = nullptr;
+            outputter.send_threadsafe(msg);
+        };
+        std::thread toutputter{[&]() -> void { outputter.run(); }};
+        std::thread tserial{[&]() -> void { serial_link.run(on_incoming_message); }};
+        std::thread tf710{[&]() -> void { f710.run(on_f710_update_callback); }};
+        tserial.join();
+        tf710.join();
+        toutputter.join();
+        printf("after all joins \n");
+    } catch(...) {
+        printf("main catch \n");
     };
-
-    /** BEWARE this function is called on the tserial thread*/
-    SerialLink::OnRecvCallback on_incoming_message = [&](IoBuffer::UPtr iob_uptr) -> void {
-        std::string msg = std::string(iob_uptr->get_first_char_ptr());
-        iob_uptr = nullptr;
-        outputter.send_threadsafe(msg);
-    };
-
-    std::thread toutputter{[&]()->void { outputter.run();}};
-	std::thread tserial{[&]()->void{serial_link.run(on_incoming_message);}};
-    std::thread tf710{[&]()->void{f710.run(on_f710_update_callback);}};
-
-    tserial.join();
-    tf710.join();
-    toutputter.join();
 
 	printf("after serial thread start about to spin\n");
 	return 0;
