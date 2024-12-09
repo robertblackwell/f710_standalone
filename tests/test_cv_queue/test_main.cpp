@@ -1,8 +1,8 @@
 #include <cv_queue.h>
-#include <stdio.h>
+#include <cstdio>
 #include <thread>
 #include <string>
-#include <format>
+#include <ros2-serial-bridge/src/bridge_lib/std_format.h>
 #include <pthread.h>
 
 typedef std::string QueueItem;
@@ -13,7 +13,7 @@ int producer()
 {
     for(int i = 0; i < 10; i++) {
         auto id = gettid();
-        auto s = std::format("from producer {}  count: {}", id, i);
+        auto s = std_format("from producer {}  count: {}", id, i);
         queue.put(s);
     }
 

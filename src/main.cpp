@@ -1,12 +1,16 @@
+#define GNU_SOURCE
+#include <stdio.h>
 #include <thread>
 #include <climits>
-#include <format>
 #include <f710.h>
+#include <bridge_lib/std_format.h>
 #include <bridge_lib/iobuffer.h>
 #include <bridge_lib/serial_link.h>
 #include <bridge_lib/serial_settings.h>
 #include <rbl/simple_exit_guard.h>
 #include "outputter.h"
+
+
 
 using namespace serial_bridge;
 using namespace f710;
@@ -16,18 +20,8 @@ std::string make_outputter_message(int left, int right);
 
 int main()
 {
-/**
- * Create the serial link that the does the communication on the communication thread.
-*/
-    try {
-//        auto port_path_list = list_serial_devices();
-//        if(port_path_list.size() != 1) {
-//            throw std::runtime_error("could not find exactly one suitable serial port path");
-//        }
-//        auto port = port_path_list[0];
-//        int fd = open_serial(port);
-//        apply_default_settings(fd);
 
+    try {
         SerialLink serial_link{};
         F710       f710{"js0"};
         Outputter  outputter{};
@@ -74,7 +68,10 @@ IoBuffer::UPtr make_robot_message(int left, int right)
 }
 std::string make_outputter_message(int left, int right)
 {
-    auto s = std::format("left: {}  right: {}", left, right);
+    char* bufptr; 
+    asprintf(&bufptr, "left: %d  right: %d", left, right);
+    auto s = std::string(bufptr);
+    free(bufptr);
     return s;
 //    IoBuffer::UPtr iob = std::make_unique<IoBuffer>(256);
 //    int len = snprintf(iob->get_first_char_ptr(), 256, "received %d %d  ", left, right);

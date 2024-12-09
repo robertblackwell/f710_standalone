@@ -35,9 +35,19 @@ add_executable(f710_controller
         ros2-serial-bridge/src/bridge_lib/serial_link.cpp
         ros2-serial-bridge/src/bridge_lib/serial_settings.h
         ros2-serial-bridge/src/bridge_lib/serial_settings.cpp
+        ros2-serial-bridge/src/bridge_lib/std_format.cpp
+        ros2-serial-bridge/src/bridge_lib/std_format.h
 
 )
-target_include_directories(f710_controller  PUBLIC ./  ./src  ./ros2-serial-bridge/src  ./ros2-serial-bridge/src/bridge_lib ./f710 ./f710/src)
+target_include_directories(f710_controller
+        PUBLIC
+        ./
+        ./src
+        ./ros2-serial-bridge/src
+        ./ros2-serial-bridge/src/bridge_lib
+        ./f710 ./f710/src
+        ./trog
+)
 #target_compile_definitions(f710 PUBLIC RBL_LOG_ENABLED RBL_LOG_ALLOW_GLOBAL)
 
 add_subdirectory(tests)
