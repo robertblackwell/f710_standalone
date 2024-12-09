@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="VcsDirectoryMappings">
+    <mapping directory="" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../MyPhpPackages/cli_phar_helper" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../MyPhpPackages/database-package" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../MyPhpPackages/gallery" vcs="Git" />
@@ -23,10 +24,8 @@
     <mapping directory="$PROJECT_DIR$/../apache2-macbook" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../bunyip" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../cpython" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/f710" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/ros2-serial-bridge" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/trog" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../http_in_c" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../http_in_c/scripts/cloned_repos/http-parser" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../jsoncons" vcs="Git" />
