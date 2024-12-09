@@ -1,0 +1,35 @@
+add_executable(f710_controller
+        main.cpp
+        outputter.cpp
+        outputter.h
+        ../f710/src/f710_time.h
+        ../f710/src/f710.h
+        ../f710/src/f710.cpp
+        ../f710/src/f710_helpers.cpp
+        ../f710/src/f710_helpers.h
+        ../f710/rbl/logger.cpp
+        ../f710/rbl/logger.h
+
+        ../ros2-serial-bridge/src/bridge_lib/fd_functions.h
+        ../ros2-serial-bridge/src/bridge_lib/fd_functions.cpp
+        ../ros2-serial-bridge/src/bridge_lib/iobuffer.h
+        ../ros2-serial-bridge/src/bridge_lib/iobuffer.cpp
+        ../ros2-serial-bridge/src/bridge_lib/queue.h
+        ../ros2-serial-bridge/src/bridge_lib/iobuffer.h
+        ../ros2-serial-bridge/src/bridge_lib/serial_link.h
+        ../ros2-serial-bridge/src/bridge_lib/serial_link.cpp
+        ../ros2-serial-bridge/src/bridge_lib/serial_settings.h
+        ../ros2-serial-bridge/src/bridge_lib/serial_settings.cpp
+        ../ros2-serial-bridge/src/bridge_lib/std_format.cpp
+        ../ros2-serial-bridge/src/bridge_lib/std_format.h
+
+)
+target_include_directories(f710_controller
+        PUBLIC
+        ../
+        ./
+        ../ros2-serial-bridge/src
+        ../ros2-serial-bridge/src/bridge_lib
+        ../f710 
+        ../f710/src
+)
