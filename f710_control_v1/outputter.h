@@ -1,9 +1,9 @@
 #ifndef F710_OUTPUTTER_H
 #define F710_OUTPUTTER_H
 #include <string>
-#include <bridge_lib/queue.h>
-#include <bridge_lib/iobuffer.h>
-#include "cv_queue.h"
+#include <rbl/queue.h>
+#include <rbl/iobuffer.h>
+#include <rbl/cv_queue.h>
 
 class Outputter
 {

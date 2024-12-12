@@ -3,8 +3,8 @@
 #include <thread>
 #include <climits>
 #include <f710.h>
-#include <bridge_lib/std_format.h>
-#include <bridge_lib/iobuffer.h>
+#include <rbl/std_format.h>
+#include <rbl/iobuffer.h>
 #include <bridge_lib/serial_link.h>
 #include <bridge_lib/serial_settings.h>
 #include <rbl/simple_exit_guard.h>
@@ -15,8 +15,8 @@
 using namespace serial_bridge;
 using namespace f710;
 
-IoBuffer::UPtr make_robot_message(int left, int right);
-std::string make_outputter_message(int left, int right);
+static IoBuffer::UPtr make_robot_message(int left, int right);
+static std::string make_outputter_message(int left, int right);
 
 int main()
 {
@@ -57,7 +57,7 @@ int main()
 	return 0;
 }
 
-IoBuffer::UPtr make_robot_message(int left, int right)
+static IoBuffer::UPtr make_robot_message(int left, int right)
 {
     auto left_percent = (float)round(((float)(left) / (float)INT16_MAX) * 100.0);
     auto right_percent = (float)round(((float)(right) / (float)INT16_MAX) * 100.0);
@@ -66,7 +66,7 @@ IoBuffer::UPtr make_robot_message(int left, int right)
     iob->setSize(len);
     return iob;
 }
-std::string make_outputter_message(int left, int right)
+static std::string make_outputter_message(int left, int right)
 {
     char* bufptr; 
     asprintf(&bufptr, "left: %d  right: %d", left, right);

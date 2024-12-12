@@ -13,5 +13,17 @@ project(f710
     LANGUAGES CXX
 )
 set(CMAKE_BUILD_TYPE Debug)
-add_subdirectory(src)
+set(F710_DIR ${PROJECT_SOURCE_DIR}/f710)
+set(RBL_DIR ${PROJECT_SOURCE_DIR}/f710/rbl)
+set(MOTION_CONTROL_DIR ${PROJECT_SOURCE_DIR}/modioint_control)
+set(MOTION_CONTROL_DIR ${PROJECT_SOURCE_DIR}/modioint_control)
+set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge)
+set(JSONCONS_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge/include)
+MESSAGE("PROJECT_SOURCE_DIR   ${PROJECT_SOURCE_DIR}")
+
+set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge)
+
+add_subdirectory(f710_demo)
+add_subdirectory(f710_control_v1)
+add_subdirectory(f710_control_v2)
 add_subdirectory(tests)

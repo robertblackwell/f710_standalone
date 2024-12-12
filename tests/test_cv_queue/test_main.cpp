@@ -2,7 +2,7 @@
 #include <cstdio>
 #include <thread>
 #include <string>
-#include <ros2-serial-bridge/src/bridge_lib/std_format.h>
+#include <rbl/std_format.h>
 #include <pthread.h>
 
 typedef std::string QueueItem;

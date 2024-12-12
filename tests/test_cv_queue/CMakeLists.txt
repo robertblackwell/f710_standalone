@@ -1,17 +1,17 @@
 add_executable(test_cv_queue
         test_main.cpp
-        ../../src/cv_queue.cpp
-        ../../src/cv_queue.h
-        ../../ros2-serial-bridge/src/bridge_lib/std_format.cpp
+        ${F710_DIR}/rbl/cv_queue.cpp
+        ${F710_DIR}/rbl/cv_queue.h
+        ${F710_DIR}/rbl/std_format.cpp
 )
 
 target_include_directories(test_cv_queue
         PUBLIC SYSTEM
-        ./
-        ../../
-        ../../src
-        ../../../
-        ../../../ros2-serial-bridge/src
+        ${PROJECT_SOURCE_DIR}/
+        ${PROJECT_SOURCE_DIR}/f710_control_v1
+        ${PROJECT_SOURCE_DIR}/f710
+        ${PROJECT_SOURCE_DIR}/f710/rbl
+        ${PROJECT_SOURCE_DIR}/ros2-serial-bridge
 )
 
 add_test(test_cv_queue test_cv_queue)
