@@ -1,0 +1,35 @@
+add_executable(f710_controller
+        main.cpp
+        outputter.cpp
+        outputter.h
+        ${F710_DIR}/src/f710_time.h
+        ${F710_DIR}/src/f710.h
+        ${F710_DIR}/src/f710.cpp
+        ${F710_DIR}/src/f710_helpers.cpp
+        ${F710_DIR}/src/f710_helpers.h
+        ${F710_DIR}/rbl/logger.cpp
+        ${F710_DIR}/rbl/logger.h
+
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.cpp
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/iobuffer.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/iobuffer.cpp
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/queue.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/iobuffer.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_link.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_link.cpp
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_settings.h
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_settings.cpp
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/std_format.cpp
+        ${SERIAL_BRIDGE_DIR}/bridge_lib/std_format.h
+
+)
+target_include_directories(f710_controller
+        PUBLIC
+        ${PROJECT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/src
+        ${PROJECT_SOURCE_DIR}/f710
+        ${PROJECT_SOURCE_DIR}/f710/src
+        ${PROJECT_SOURCE_DIR}/ros2-serial-bridge
+        ${PROJECT_SOURCE_DIR}/ros2-serial-bridge/bridge_lib
+)

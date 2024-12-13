@@ -127,7 +127,7 @@ void MotionControl::run(const std::function<void(IoBuffer::UPtr iobuptr)>& buffe
                 if((f710_target_throttle_left != tmp_f710_left) || (f710_target_throttle_right != tmp_f710_right)) {
                     f710_target_throttle_left = tmp_f710_left;
                     f710_target_throttle_right = tmp_f710_right;
-                    auto [left, right] = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_left);
+                    auto [left, right] = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_rightstt);
                     auto iobu = make_robot_message(left, right);
                     actual_left_throttle = left;
                     actual_right_throttle = right;
@@ -136,7 +136,7 @@ void MotionControl::run(const std::function<void(IoBuffer::UPtr iobuptr)>& buffe
                     buffer_callback(std::move(iobu));
                 }
         } else if(auto ec = std::get_if<TwoEncoderStatus::UPtr>(&*item)) {
-
+            continue;
             auto left_rpm = (*ec)->left.motor_rpm_estimate;
             auto right_rpm = (*ec)->right.motor_rpm_estimate;
             auto left_pwm = actual_left_throttle;
