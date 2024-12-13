@@ -40,7 +40,7 @@ int main()
          * -    converts them to f710_message and passes them to the motion control thread.
         */
         std::function<void(int, int)> on_f710_update_callback = [&](int left, int right) -> void {
-            printf("left: %d right: %d\n", left, right);
+//            printf("left: %d right: %d\n", left, right);
             auto iob_uptr = make_robot_message(left, right);
             auto outputter_msg = make_outputter_message(left, right);
             std::unique_ptr<F710LeftRight> msg = std::make_unique<F710LeftRight>(left, right);
@@ -91,6 +91,7 @@ int main()
         auto motion_control_callback = [&](IoBuffer::UPtr iobuptr){
             /* The motion controller gets IO Buffers to send to the serial thread.
              */
+            RBL_LOG_FMT("%s", iobuptr->c_str())
             serial_link.send_threadsafe(std::move(iobuptr));
         };
 

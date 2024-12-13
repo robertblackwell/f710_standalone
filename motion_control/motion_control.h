@@ -11,35 +11,6 @@
 #include <rbl/cv_queue.h>
 using namespace non_ros_msgs;
 using namespace rbl;
-// #define CVQ_USE_HACKx
-// #ifdef CVQ_USE_HACK
-// struct HackUnion {
-//     int type;
-//     union {
-//         F710LeftRight::UPtr     m_f710_uptr;
-//         TwoEncoderStatus::UPtr  m_two_encoder_status_uptr;
-//         FirmwareStartupResponse::UPtr   m_firmware_startup;
-//     };
-//     explicit HackUnion(F710LeftRight::UPtr f710_uptr): type(1), m_f710_uptr(std::move(f710_uptr)){};
-//     explicit HackUnion(TwoEncoderStatus::UPtr two_encoders): type(2), m_two_encoder_status_uptr(std::move(two_encoders)){};
-//     explicit HackUnion(FirmwareStartupResponse::UPtr firmware_startup): type(3), m_firmware_startup(std::move(firmware_startup)){};
-//     ~HackUnion()
-//     {
-//         switch(type) {
-//             case 1:
-//                 m_f710_uptr = nullptr;
-//                 break;
-//             case 2:
-//                 m_firmware_startup = nullptr;
-//                 break;
-//             case 3:
-//                 m_two_encoder_status_uptr = nullptr;
-//                 break;
-//         }
-//     }
-// };
-// #else
-// #endif
 class MotionControl
 {
 public:
