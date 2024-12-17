@@ -15,5 +15,6 @@ double round_to(double value, double precision = 1.0);
 rbl::IoBuffer::UPtr make_robot_message(double left_percent, double right_percent);
 rbl::IoBuffer::UPtr make_robot_stream_samples_command(double interval_ms);
 rbl::IoBuffer::UPtr make_robot_stream_samples_off_command();
+rbl::IoBuffer::UPtr make_robot_reboot_command();
 
 #endif

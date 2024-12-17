@@ -74,6 +74,11 @@ private:
      * handle encoder update
      */
     void handle_encoder_update_while_going_straight(TwoEncoderStatus& ec);
+
+    void handle_reboot_pico();
+    void handle_pico_has_rebooted();
+
+
     void dump_encoder_status(TwoEncoderStatus& ec);
 
 

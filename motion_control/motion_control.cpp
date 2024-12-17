@@ -6,6 +6,8 @@
 #include "motion_control.h"
 #include "helpers.h"
 
+#define GS_STARTUP 9
+#define GS_WAITING_FOR_PICO_TO_BOOT 11
 #define GS_STATIONARY 1
 #define GS_GO_STRAIGHT 2
 #define GS_TURNING 3
@@ -127,19 +129,40 @@ void MotionControl::handle_encoder_update_while_going_straight(TwoEncoderStatus&
     m_buffer_callback(std::move(iobu));
 
 };
+void MotionControl::handle_reboot_pico()
+{
+    m_state = GS_WAITING_FOR_PICO_TO_BOOT;
+    auto iobu = make_robot_reboot_command();
+    m_buffer_callback(std::move(iobu));
+}
+void MotionControl::handle_pico_has_rebooted()
+{
+    m_state = GS_STATIONARY;
+}
 
 void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callback)
 {
     m_buffer_callback = std::move(buffer_callback);
-    m_state = GS_STATIONARY;
+    m_state = GS_WAITING_FOR_PICO_TO_BOOT;
+    auto iobu = make_robot_reboot_command();
+    m_buffer_callback(std::move(iobu));
     while(true) {
         auto item = m_queue.get_wait();
 
         auto leftright = std::get_if<F710LeftRight::UPtr>(&*item);
         auto ec = std::get_if<TwoEncoderStatus::UPtr>(&*item);
         auto fs = std::get_if<FirmwareStartupResponse::UPtr>(&*item);
-
         switch(m_state) {
+            case GS_STARTUP: {
+                handle_reboot_pico();
+            }
+            break;
+            case GS_WAITING_FOR_PICO_TO_BOOT: {
+                if(fs) {
+                    handle_pico_has_rebooted();
+                }
+            }
+            break;
             case GS_STATIONARY: {
                 if(leftright) {
                     auto lr = *(*leftright);

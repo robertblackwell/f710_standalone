@@ -39,6 +39,13 @@ IoBuffer::UPtr make_robot_stream_samples_off_command()
     iob->setSize(len);
     return iob;
 }
+IoBuffer::UPtr make_robot_reboot_command()
+{
+    IoBuffer::UPtr iob = std::make_unique<IoBuffer>(256);
+    int len = snprintf(iob->get_first_char_ptr(), 256, "b \n ");
+    iob->setSize(len);
+    return iob;
+}
 
 
 std::tuple<double, double> calculate_first_pwm(int f710_left, int f710_right) {
