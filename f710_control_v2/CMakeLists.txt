@@ -31,8 +31,11 @@ add_executable(f710_controller_v2
         ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_settings.cpp
         ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.h
         ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.cpp
-        ../motion_control/motion_control.cpp
-        ../motion_control/motion_control.h
+
+        ${MOTION_CONTROL_DIR}/motion_control.cpp
+        ${MOTION_CONTROL_DIR}/motion_control.h
+        ${MOTION_CONTROL_DIR}/helpers.cpp
+        ${MOTION_CONTROL_DIR}/helpers.h
 
 )
 target_include_directories(f710_controller_v2

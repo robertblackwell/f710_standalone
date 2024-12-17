@@ -96,7 +96,11 @@ int main()
         };
 
         std::thread toutputter{[&]() -> void { outputter.run(); }};
-        std::thread tmotion_controller{[&](){motion_control.run(motion_control_callback);}};
+        std::thread tmotion_controller{
+            [&](){
+                motion_control.run(motion_control_callback);
+            }
+        };
         std::thread tserial{[&]() -> void { serial_link.run(on_incoming_message); }};
         std::thread tf710{[&]() -> void { f710.run(on_f710_update_callback); }};
 

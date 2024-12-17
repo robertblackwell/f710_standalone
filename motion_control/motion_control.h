@@ -32,17 +32,51 @@ public:
     using QueueItemUPtrVariant = std::variant<F710LeftRight::UPtr, TwoEncoderStatus::UPtr, FirmwareStartupResponse::UPtr>;
     using QueueItemVariant = std::variant<F710LeftRight, TwoEncoderStatus, FirmwareStartupResponse>;
     using QueueItemVariantUPtr = std::unique_ptr<QueueItemVariant>;
+
     MotionControl()=default;
     void send_threadsafe(F710LeftRight::UPtr msg);
     void send_threadsafe(TwoEncoderStatus::UPtr msg);
     void send_threadsafe(FirmwareStartupResponse::UPtr msg);
-    void run(const std::function<void(IoBuffer::UPtr iobuptr)>&);
+    void run(std::function<void(IoBuffer::UPtr iobuptr)>);
+    void run2(std::function<void(IoBuffer::UPtr iobuptr)>*);
 private:
-#ifdef CVQ_USE_HACK
-    ConditionVariableQueue<HackUnion*>   m_queue;
-#else
     ConditionVariableQueue<std::unique_ptr<QueueItemUPtrVariant>>   m_queue;
-#endif
+
+    // state machine variables
+    std::function<void(IoBuffer::UPtr iobuptr)>* m_buffer_callback;
+    int m_state;
+    int f710_target_throttle_left = 0;
+    int f710_target_throttle_right = 0;
+    double actual_left_throttle = 0.0;
+    double actual_right_throttle = 0.0;
+
+    bool is_max_straight(F710LeftRight& lr);
+    bool is_stop(F710LeftRight& lr);
+    bool is_throttle_change(F710LeftRight& lr);
+    /**
+     * handle turn
+        */
+    void handle_turn_while_turning(F710LeftRight& lr);
+    void handle_turn_while_going_straight(F710LeftRight& lr);
+    void handle_turn_while_stopped(F710LeftRight& lr);
+    /**
+     * handle gostraight
+     */
+    void handle_gostraight_while_turning(F710LeftRight& lr);
+    void handle_gostraight_while_going_straight(F710LeftRight& lr);
+    void handle_gostraight_while_stopped(F710LeftRight& lr);
+     /**
+     * handle stop
+     */
+    void handle_stop_while_going_straight(F710LeftRight& lr);
+    void handle_stop_while_turning(F710LeftRight& lr);
+    /**
+     * handle encoder update
+     */
+    void handle_encoder_update_while_going_straight(TwoEncoderStatus& ec);
+
+
+
 };
 
 #endif //F710_MOTION_CONTROL_H
