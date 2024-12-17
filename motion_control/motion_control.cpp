@@ -71,7 +71,7 @@ void MotionControl::handle_turn_while_stopped(F710LeftRight& lr)
 };
 void MotionControl::handle_gostraight_while_turning(F710LeftRight& lr) 
 {
-
+    handle_gostraight_while_stopped(lr);
 };
 void MotionControl::handle_gostraight_while_going_straight(F710LeftRight& lr) 
 {
@@ -160,8 +160,10 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
                         handle_gostraight_while_going_straight(lr);
                     } else if(is_stop(lr)) {
                         handle_stop_while_going_straight(lr);
-                    } else if(is_max_straight(lr) &&(is_throttle_change(lr))) {
+                    } else if(is_max_straight(lr) && (is_throttle_change(lr))) {
                         // just stop - next f710 input will fix it
+                    } else {
+                        handle_turn_while_going_straight(lr);
                     }
                 } else if(ec) {
                     handle_encoder_update_while_going_straight(*(*ec));
