@@ -45,29 +45,29 @@ bool MotionControl::is_throttle_change(F710LeftRight& lr) {
 void MotionControl::handle_turn_while_turning(F710LeftRight& lr) 
 {
     m_state = GS_TURNING;
-    auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-    (*m_buffer_callback)(std::move(iobu));
+    m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_turn_while_going_straight(F710LeftRight& lr) 
 {
     m_state = GS_TURNING;
     
     auto iob = make_robot_stream_samples_off_command(); 
-    (*m_buffer_callback)(std::move(iob));
+    m_buffer_callback(std::move(iob));
 
     f710_target_throttle_left = lr.m_left;
     f710_target_throttle_right = lr.m_right;
-    auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-    (*m_buffer_callback)(std::move(iobu));
+    m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_turn_while_stopped(F710LeftRight& lr) 
 {
     m_state = GS_TURNING;
-    auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-    (*m_buffer_callback)(std::move(iobu));
+    m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_gostraight_while_turning(F710LeftRight& lr) 
 {
@@ -86,32 +86,51 @@ void MotionControl::handle_gostraight_while_stopped(F710LeftRight& lr)
     m_state = GS_GO_STRAIGHT;
     f710_target_throttle_left = lr.m_left;
     f710_target_throttle_right = lr.m_right;
-    auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-    (*m_buffer_callback)(std::move(iobu));
+    m_buffer_callback(std::move(iobu));
     auto iob2 = make_robot_stream_samples_command(1000);
-    (*m_buffer_callback)(std::move(iob2));
+    m_buffer_callback(std::move(iob2));
+    m_skip_encoder_status_count = 2;
 
 };
 void MotionControl::handle_stop_while_going_straight(F710LeftRight& lr) 
 {
-
+    m_state = GS_STATIONARY;
+    auto iob = make_robot_stream_samples_off_command();
+    m_buffer_callback(std::move(iob));
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(0, 0);
+    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
+    m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_stop_while_turning(F710LeftRight& lr) 
 {
-    m_state = GS_TURNING;
-    auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
+    m_state = GS_STATIONARY;
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(0, 0);
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-    (*m_buffer_callback)(std::move(iobu));
+    m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_encoder_update_while_going_straight(TwoEncoderStatus& ec) 
 {
+    if(m_skip_encoder_status_count > 0) {
+        m_skip_encoder_status_count--;
+        dump_encoder_status(ec);
+        return;
+    }
+    auto left_rpm = ec.left.motor_rpm_estimate;
+    auto right_rpm = ec.right.motor_rpm_estimate;
+
+    std::tie(actual_left_throttle, actual_right_throttle) = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_right,
+                                            actual_left_throttle, actual_right_throttle,
+                                            left_rpm, right_rpm);
+    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
+    m_buffer_callback(std::move(iobu));
 
 };
 
 void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callback)
 {
-    m_buffer_callback = &buffer_callback;
+    m_buffer_callback = std::move(buffer_callback);
     m_state = GS_STATIONARY;
     while(true) {
         auto item = m_queue.get_wait();
@@ -127,10 +146,7 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
                     if(is_max_straight(lr)) {
                         handle_gostraight_while_stopped(lr);
                     } else if(! is_stop(lr)) {
-                        m_state = GS_TURNING;
-                        auto [actual_left_throttle, actual_right_throttle] = calculate_first_pwm(lr.m_left, lr.m_right);
-                        auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
-                        (buffer_callback)(std::move(iobu));
+                        handle_turn_while_stopped(lr);
                     } else {
                         // do nothing
                     }
@@ -172,6 +188,21 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
         }
     }
 }
+void MotionControl::dump_encoder_status(TwoEncoderStatus& ec)
+{
+    auto left_latest_rpm = ec.left.motor_rpm_estimate;
+    auto right_latest_rpm = ec.right.motor_rpm_estimate;
+    auto left_latest_actual = actual_left_throttle;
+    auto right_latest_actual = actual_right_throttle;
+
+    RBL_LOG_FMT("calculate_next_pwm \n\tleft rpm: %f  \n\tright: rpm: %f\n\terror %f"
+                "\n\tactual_left_throttle: %f \n\tactual_right_throttle: %f "
+                "\n\t m_skip_encoder_count: %d",
+                left_latest_rpm, right_latest_rpm, (right_latest_rpm-left_latest_rpm),
+                left_latest_actual, right_latest_actual, m_skip_encoder_status_count
+    );
+}
+
 #if 0
 void MotionControl::run2(const std::function<void(IoBuffer::UPtr iobuptr)>& buffer_callback)
 {

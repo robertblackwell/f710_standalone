@@ -38,17 +38,17 @@ public:
     void send_threadsafe(TwoEncoderStatus::UPtr msg);
     void send_threadsafe(FirmwareStartupResponse::UPtr msg);
     void run(std::function<void(IoBuffer::UPtr iobuptr)>);
-    void run2(std::function<void(IoBuffer::UPtr iobuptr)>*);
 private:
     ConditionVariableQueue<std::unique_ptr<QueueItemUPtrVariant>>   m_queue;
 
     // state machine variables
-    std::function<void(IoBuffer::UPtr iobuptr)>* m_buffer_callback;
+    std::function<void(IoBuffer::UPtr iobuptr)> m_buffer_callback;
     int m_state;
     int f710_target_throttle_left = 0;
     int f710_target_throttle_right = 0;
     double actual_left_throttle = 0.0;
     double actual_right_throttle = 0.0;
+    int m_skip_encoder_status_count;
 
     bool is_max_straight(F710LeftRight& lr);
     bool is_stop(F710LeftRight& lr);
@@ -74,6 +74,8 @@ private:
      * handle encoder update
      */
     void handle_encoder_update_while_going_straight(TwoEncoderStatus& ec);
+    void dump_encoder_status(TwoEncoderStatus& ec);
+
 
 
 

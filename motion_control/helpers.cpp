@@ -1,5 +1,7 @@
 #include <cstdint>
 #include <cmath>
+#define RBL_LOG_ENABLED
+#define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
 #include <rbl/iobuffer.h>
 #include "helpers.h"
