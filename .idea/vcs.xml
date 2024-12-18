@@ -2,7 +2,5 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/f710" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ros2-serial-bridge" vcs="Git" />
   </component>
 </project>

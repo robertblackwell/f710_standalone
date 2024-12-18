@@ -14,13 +14,76 @@ project(f710
 )
 set(CMAKE_BUILD_TYPE Debug)
 set(F710_DIR ${PROJECT_SOURCE_DIR}/f710)
-set(RBL_DIR ${PROJECT_SOURCE_DIR}/f710/rbl)
+set(RBL_DIR ${PROJECT_SOURCE_DIR}/rbl)
+set(BRIDGE_LIB_DIR ${PROJECT_SOURCE_DIR}/bridge_lib)
 set(MOTION_CONTROL_DIR ${PROJECT_SOURCE_DIR}/motion_control)
-set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge)
-set(JSONCONS_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge/include)
+set(NON_ROS_MSGS_DIR ${PROJECT_SOURCE_DIR}/non_ros_messages)
+set(JSONCONS_INCLUDE_DIR vendor/include)
+
+set(F710_SRC
+        ${F710_DIR}/src/f710.cpp
+        ${F710_DIR}/src/f710.h
+        ${F710_DIR}/src/f710_exceptions.h
+        ${F710_DIR}/src/f710_helpers.cpp
+        ${F710_DIR}/src/f710_helpers.h
+#        ${F710_DIR}/src/f710_original.cpp
+        ${F710_DIR}/src/f710_time.h
+)
+set(RBL_SRC
+        ${RBL_DIR}/logger.cpp
+        ${RBL_DIR}/logger.h
+        ${RBL_DIR}/iobuffer.h
+        ${RBL_DIR}/iobuffer.cpp
+        ${RBL_DIR}/queue.h
+        ${RBL_DIR}/std_format.cpp
+        ${RBL_DIR}/std_format.h
+        ${RBL_DIR}/std_format.cpp
+        ${RBL_DIR}/std_format.h
+)
+set(BRIDGE_LIB_SRC
+        ${BRIDGE_LIB_DIR}/fd_functions.h
+        ${BRIDGE_LIB_DIR}/fd_functions.cpp
+        ${BRIDGE_LIB_DIR}/serial_link.h
+        ${BRIDGE_LIB_DIR}/serial_link.cpp
+        ${BRIDGE_LIB_DIR}/serial_settings.h
+        ${BRIDGE_LIB_DIR}/serial_settings.cpp
+)
+set(MOTION_CONTROL_SRC
+        ${MOTION_CONTROL_DIR}/helpers.h
+        ${MOTION_CONTROL_DIR}/helpers.cpp
+        ${MOTION_CONTROL_DIR}/motion_control.h
+        ${MOTION_CONTROL_DIR}/motion_control.cpp
+)
+set(NON_ROS_MSGS_SRC
+        ${NON_ROS_MSGS_DIR}/msg_struct.h
+        ${NON_ROS_MSGS_DIR}/msgs.h
+        ${NON_ROS_MSGS_DIR}/msgs.cpp
+)
+set(LIB_SRC
+        ${F710_SRC}
+        ${RBL_SRC}
+        ${BRIDGE_LIB_SRC}
+        ${NON_ROS_MSGS_SRC}
+)
+set(APP_INCLUDE_DIRS
+        ${PROJECT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/f710/src
+        ${PROJECT_SOURCE_DIR}/vendor/include
+)
+
+
 MESSAGE("PROJECT_SOURCE_DIR   ${PROJECT_SOURCE_DIR}")
 
-set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/ros2-serial-bridge)
+MESSAGE("LIB_SRC   ${LIB_SRC}")
+MESSAGE("APP_INCLUDE_DIRS   ${PROJECT_SOURCE_DIR}")
+
+set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/serial-bridge)
+
+set(APP_LIB applib)
+
+add_library(${APP_LIB} STATIC ${LIB_SRC})
+target_include_directories(${APP_LIB} PUBLIC ${APP_INCLUDE_DIRS})
+
 
 add_subdirectory(f710_demo)
 add_subdirectory(f710_control_v1)

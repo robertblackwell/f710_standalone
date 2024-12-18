@@ -14,6 +14,7 @@
 
 using namespace serial_bridge;
 using namespace f710;
+using namespace rbl;
 
 static IoBuffer::UPtr make_robot_message(int left, int right);
 static std::string make_outputter_message(int left, int right);
