@@ -1,0 +1,160 @@
+#ifndef H_fbcontrol_custom_h
+#define H_fbcontrol_custom_h
+#include <vector>
+#include <optional>
+#include <functional>
+
+using FirstGuessFunction = std::function<double(double)>;
+
+enum class MotorSide {left, right};
+
+std::vector<double>& get_rpm();
+
+std::vector<double>& get_pwm(MotorSide side);
+
+FirstGuessFunction make_first_guess_function(MotorSide side);
+
+
+
+struct ValueWithDirection
+{
+    double m_raw_value;
+    ValueWithDirection()
+    {
+        m_raw_value = 0.0;
+    }
+    ValueWithDirection(double v)
+    {
+        m_raw_value = v;
+    }
+    [[nodiscard]] double abs_value() const
+    {
+        return m_raw_value < 0 ? -m_raw_value : m_raw_value;
+    }
+    void update_abs_value(double abs_value)
+    {
+        if(m_raw_value < 0)
+            m_raw_value = -abs_value;
+        else
+            m_raw_value = abs_value;
+    }
+    [[nodiscard]] double signed_value() const
+    {
+        return m_raw_value;
+    }
+};
+
+class CustomController
+{
+    using FirstGuessFunction = std::function<double(double)>;
+    CustomController(int algorithm, FirstGuessFunction* first_guess_func);
+//    m_fg_func(first_guess_func), m_target(ValueWithDirection{}), m_algorithm(algorithm)
+//    {
+//        m_error = 0.0;
+//        m_previous_error = 0.0;
+//        m_yn_1 = 0.0;
+//        m_yn = 0.0;
+//        m_xn_1 = 0.0;
+//        m_xn = 0.0;
+//        m_en = 0.0;
+//        m_en_1 = 0.0;
+//        m_direction = 1;
+//        m_count;
+//    }
+    auto set_target(ValueWithDirection new_target) -> ValueWithDirection;
+//    {
+//        m_count = 0;
+//        m_target = new_target;
+//        auto new_x = m_fg_func(m_target.abs_value());
+//        m_xn = new_x;
+//        m_yn = 0.0;
+//        auto r = new_x < 100.0 ? new_x: 100.0;
+//        m_count = 1;
+//        return ValueWithDirection(new_x);
+//
+//    }
+    auto get_target() -> ValueWithDirection;
+//    {
+//        return m_target;
+//    }
+    auto update(ValueWithDirection latest_y) -> ValueWithDirection;
+//    {
+//        double new_x = 0.0;
+//        if(m_target.abs_value() == 0.0) {
+//            return ValueWithDirection{};
+//        }
+//        if(m_count == 0) {
+//            m_error = m_target.abs_value() - latest_y.abs_value();
+//            new_x = m_fg_func(m_target.abs_value());
+//            m_xn = new_x;
+//            m_yn = 0.0;
+//        } else if(1 <= m_count && m_count <= 3) {
+//            new_x = m_xn;
+//        } else {
+//            m_yn = latest_y.abs_value();
+//            m_error = m_target.abs_value() - latest_y.abs_value();
+//            double error_percent = m_error / m_target.abs_value();
+//            switch(m_algorithm) {
+//                case 1:{
+//                    if(std::abs(m_error) >= 0.75) {
+//                        if(std::abs(m_yn - m_yn_1) > 1.0) {
+//                            double slope = (m_yn - m_yn_1) / (m_xn + m_xn_1);
+//                            new_x =  (m_target.abs_value() - m_yn) / slope + m_xn;
+//                            m_xn_1 = m_xn;
+//                            m_yn_1 = m_yn;
+//                            m_xn = new_x;
+//                        } else {
+//                            new_x = m_xn;
+//                        }
+//                        new_x = m_xn;
+//                    }
+//                }
+//                break;
+//                case 2:{
+//                    if(m_error > 20.0) {
+//                        new_x += 0.5;
+//                    } else if(m_error < -20.0) {
+//                        new_x -= 0.5;
+//                    } else {
+//                        new_x = m_xn;
+//                    }
+//                    m_xn = new_x;
+//                }
+//                break;
+//                case 3:{
+//                    if(m_error / m_target.abs_value() > 0.1) {
+//                        new_x = m_xn * 1.1;
+//                    } else if(m_error / m_target.abs_value() < -0.1) {
+//                        new_x = m_xn * 0.9;
+//                    } else {
+//                        new_x = m_xn;
+//                    }
+//
+//                }
+//                break;
+//            }
+//            m_previous_error = m_error;
+//            new_x = (new_x > 30.0) ? new_x : 30.0;
+//        }
+//        double r = (new_x <= 100.0) ? new_x : 100.0;
+//        ValueWithDirection  v(m_target.m_raw_value);
+//        v.update_abs_value(r);
+//        return r;
+//    }
+    double              m_error;
+    ValueWithDirection  m_target;
+    int                 m_algorithm;
+    int                 m_count;
+    double              m_previous_error;
+    double              m_xn_1;
+    double              m_yn_1;
+    double              m_xn;
+    double              m_yn;
+    double              m_en_1;
+    double              m_en;
+    int                 m_direction;
+    FirstGuessFunction*  m_fg_func;
+};
+
+
+#endif

@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "LinuxRos",
+            "browse":{
+                "databaseFilename": "${default}",
+                "limitSymbolsToIncludedHeaders": false
+            },
+            "includePath": [
+                // "${workspaceFolder}/include",
+                // "${workspaceFolder}/f710_control_v1",
+                // "${workspaceFolder}/**",
+                // "${workspaceFolder}/../../install/sample_interfaces/include/**",
+                // "/opt/ros/iron/include/**"
+            ],
+            "compileCommands":"/home/robert/robot_project/ros2_ws/build/compile_commands.json",
+            "intelliSenseMode": "gcc-x64",
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "c++20"
+        }
+    ],
+    "version": 4
+}

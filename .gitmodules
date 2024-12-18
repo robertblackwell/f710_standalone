@@ -1,6 +1,0 @@
-[submodule "f710"]
-	path = f710
-	url = git@github.com:robertblackwell/f710.git
-[submodule "ros2-serial-bridge"]
-	path = ros2-serial-bridge
-	url = git@github.com:robertblackwell/ros2-serial-bridge.git

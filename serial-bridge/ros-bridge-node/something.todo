@@ -1,0 +1,14 @@
+Short term:
+    ☐ readme.md and generally packaging a git repo
+    ☐ Launch file for each of the test and final setups
+        ☐ Need a watcher node that prints out everything received from Pico
+    ☐ close loop control code in c++ and in bridge and pico
+    ☐ colcon -j option and other tools for building and deploying
+    ☐ jsoncon as a submodule
+    ☐ improve integration of tests and change name from mytests
+        ☐ unittest.h/c as submodule ?
+Longer term:
+    ☐ Research requirements for Odometery messages
+    ☐ Compile and deploy on RaspberryPi, remote dev or cross compile
+    ☐ game controller
+    ☐ make unit tests for cpp packages that are ros2 aware

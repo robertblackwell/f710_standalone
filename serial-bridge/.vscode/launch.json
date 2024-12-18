@@ -1,0 +1,15 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name":"test_msgs C++Debug ",
+            "request": "launch",
+            "type": "cppdbg",
+            "cwd" : "${workspaceFolder}",
+            "program":"/home/robert/robot_project/ros2_ws/src/cpp_serial_bridge/src/mytests/build/test_msgs/test_msgs",
+        }
+    ]
+}
