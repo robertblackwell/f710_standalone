@@ -15,3 +15,10 @@ https://tttapa.github.io/Pages/Raspberry-Pi/C++-Development-Ubuntu/index.html
 
 Installing gstreamer
 [https://github.com/PhysicsX/Gstreamer-on-embedded-devices](https://github.com/PhysicsX/Gstreamer-on-embedded-devices)
+
+Cross compiling for rpi4
+[https://earthly.dev/blog/cross-compiling-raspberry-pi/](https://earthly.dev/blog/cross-compiling-raspberry-pi/)
+
+[https://github.com/abhiTronix/raspberry-pi-cross-compilers/wiki/Cross-Compiler-CMake-Usage-Guide-with-rsynced-Raspberry-Pi-64-bit-OS](https://github.com/abhiTronix/raspberry-pi-cross-compilers/wiki/Cross-Compiler-CMake-Usage-Guide-with-rsynced-Raspberry-Pi-64-bit-OS)
+
+[https://wiki.qt.io/Cross-Compile_Qt_6_for_Raspberry_Pi](https://wiki.qt.io/Cross-Compile_Qt_6_for_Raspberry_Pi)

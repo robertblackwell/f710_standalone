@@ -45,6 +45,7 @@ build/DerivedData
 build/
 cmake-debug-build/
 cmake-build-debug/
+rp4-build
 
 **/build/
 **/cmake-debug-build/

@@ -3,9 +3,9 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
   </component>
@@ -16,6 +16,7 @@
     <generated>
       <config projectName="f710" targetName="f710_controller_v1" />
       <config projectName="f710" targetName="test_cv_queue" />
+      <config projectName="f710" targetName="applib" />
       <config projectName="f710" targetName="f710_demo" />
       <config projectName="f710" targetName="f710_controller_v2" />
       <config projectName="f710" targetName="serial_test_app" />
@@ -28,199 +29,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/f710/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/cv_queue.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/cv_queue.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/cv_queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/cv_queue.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/iobuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/iobuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/iobuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/iobuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/logger.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/logger.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/logger.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/logger.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/queue.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/simple_exit_guard.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/simple_exit_guard.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/std_format.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/std_format.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710/rbl/std_format.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/std_format.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/f710_control_v1/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/f710_control_v1/main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/f710_control_v2/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_demo/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/f710_demo/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.gitmodules" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/fd_functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/fd_functions.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/fd_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/fd_functions.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/iobuffer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/iobuffer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/iobuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/iobuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/queue.h" beforeDir="false" afterPath="$PROJECT_DIR$/rbl/queue.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/serial_link.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/serial_link.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/serial_settings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_settings.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/serial_settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_settings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/std_format.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/bridge_lib/std_format.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/allocator_holder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/allocator_set.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/basic_json.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/bigint.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/byte_string.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/config/binary_config.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/config/compiler_support.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/config/jsoncons_config.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/config/version.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/conv_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/decode_json.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/decode_traits.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/endian.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/grisu3.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/heap_string.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/optional.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/parse_number.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/span.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/string_view.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/detail/write_number.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/encode_json.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/encode_traits.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/extension_traits.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/item_event_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/item_event_visitor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_array.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_content_handler.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_decoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_exception.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_filter.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_fwd.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_object.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_traits_macros.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_traits_macros_deprecated.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_type.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_type_traits.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/json_visitor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/pretty_print.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/ser_context.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/sink.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/source.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/source_adaptor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/staj_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/staj_iterator.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/tag_type.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/text_source_adaptor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/typed_array_view.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/unicode_traits.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/uri.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons/value_converter.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_decimal128.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_decimal128.hpp.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_oid.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/bson_type.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/decode_bson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/bson/encode_bson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_detail.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_event_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/cbor_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/decode_cbor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/cbor/encode_cbor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/csv_serializer.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/decode_csv.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/csv/encode_csv.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jmespath/jmespath.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jmespath/jmespath_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpatch/jsonpatch.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpatch/jsonpatch_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/expression.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/flatten.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/json_location.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/json_location_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/json_query.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath_expression.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath_selector.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/jsonpath_utilities.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpath/path_node.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpointer/jsonpointer.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonpointer/jsonpointer_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/compilation_context.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/format_validator.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/keyword_validator.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/keywords.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/schema_location.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/common/schema_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/draft7/schema_draft7.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/draft7/schema_parser_impl.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/json_schema.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/json_validator.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/jsonschema.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/jsonschema_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/schema_factory.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/jsonschema/schema_version.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/mergepatch/mergepatch.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/decode_msgpack.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/encode_msgpack.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_event_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/msgpack/msgpack_type.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/decode_ubjson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/encode_ubjson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_cursor.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_encoder.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_error.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_options.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_parser.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_reader.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/include/jsoncons_ext/ubjson/ubjson_type.hpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/non_ros_messages/msg_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/non_ros_messages/msg_struct.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/non_ros_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/non_ros_messages/msgs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/non_ros_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/non_ros_messages/msgs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/bridge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/bridge.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/bridge_speed_test.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/bridge_speed_test.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/bridge_test_cmds.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/bridge_test_cmds.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/package.xml" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/package.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/publisher_test_cmds.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/publisher_test_cmds.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/something.todo" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/something.todo" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/ros-bridge-node/taskfile.sh" beforeDir="false" afterPath="$PROJECT_DIR$/ros-bridge-node/taskfile.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/serial_test_app/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_cv_queue/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_cv_queue/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_cv_queue/test_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_cv_queue/test_main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,10 +50,10 @@
     <option name="minorVersion" value="3" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 6
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2qMmj0G05FDDGHRbJiFv68cCDq8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -264,6 +74,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "CPPToolchains",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -274,9 +85,14 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.f710_controller_v1">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="applib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="applib" CONFIG_NAME="Debug">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="f710_controller_v1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="f710_controller_v1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="f710" RUN_TARGET_NAME="f710_controller_v1">
@@ -305,6 +121,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="CMake Application.applib" />
       <item itemvalue="CMake Application.f710_controller_v1" />
       <item itemvalue="CMake Application.f710_controller_v2" />
       <item itemvalue="CMake Application.f710_demo" />
@@ -320,7 +137,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1734480950335</updated>
-      <workItem from="1734480951896" duration="5662000" />
+      <workItem from="1734480951896" duration="6966000" />
+      <workItem from="1734502882877" duration="325000" />
     </task>
     <servers />
   </component>

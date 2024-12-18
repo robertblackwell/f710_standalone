@@ -7,6 +7,8 @@ endif()
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+message(" c compiler ${CMAKE_C_COMPILER}")
+
 project(f710
     VERSION 0.0.1
     DESCRIPTION "Standalone (non-ROS) Logitech F710 gampad controller"
