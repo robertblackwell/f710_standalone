@@ -2,7 +2,6 @@
 #include <cassert>
 #define GNU_SOURCE
 #include <cstdio>
-#include <tuple>
 #include "motion_control.h"
 #include "helpers.h"
 
@@ -12,6 +11,8 @@
 #define GS_GO_STRAIGHT 2
 #define GS_TURNING 3
 #define GS_TRANSITION_TURNING_TO_GS 4
+
+#define M_SKIP_ENCODER_STATUS_MAX_COUNT 1
 
 using namespace non_ros_msgs;
 using namespace rbl;
@@ -47,8 +48,12 @@ bool MotionControl::is_throttle_change(F710LeftRight& lr) {
 void MotionControl::handle_turn_while_turning(F710LeftRight& lr) 
 {
     m_state = GS_TURNING;
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
-    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
+    PwmResult r = calculate_first_pwm(lr.m_left, lr.m_right);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
+    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_turn_while_going_straight(F710LeftRight& lr) 
@@ -60,15 +65,23 @@ void MotionControl::handle_turn_while_going_straight(F710LeftRight& lr)
 
     f710_target_throttle_left = lr.m_left;
     f710_target_throttle_right = lr.m_right;
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
+    PwmResult r = calculate_first_pwm(lr.m_left, lr.m_right);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
     m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_turn_while_stopped(F710LeftRight& lr) 
 {
     m_state = GS_TURNING;
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
-    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
+    PwmResult r = calculate_first_pwm(lr.m_left, lr.m_right);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
+    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_gostraight_while_turning(F710LeftRight& lr) 
@@ -88,12 +101,16 @@ void MotionControl::handle_gostraight_while_stopped(F710LeftRight& lr)
     m_state = GS_GO_STRAIGHT;
     f710_target_throttle_left = lr.m_left;
     f710_target_throttle_right = lr.m_right;
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(lr.m_left, lr.m_right);
-    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
+    PwmResult r = calculate_first_pwm(lr.m_left, lr.m_right);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
+    auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
     auto iob2 = make_robot_stream_samples_command(1000);
     m_buffer_callback(std::move(iob2));
-    m_skip_encoder_status_count = 2;
+    m_skip_encoder_status_count = M_SKIP_ENCODER_STATUS_MAX_COUNT;
 
 };
 void MotionControl::handle_stop_while_going_straight(F710LeftRight& lr) 
@@ -101,14 +118,22 @@ void MotionControl::handle_stop_while_going_straight(F710LeftRight& lr)
     m_state = GS_STATIONARY;
     auto iob = make_robot_stream_samples_off_command();
     m_buffer_callback(std::move(iob));
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(0, 0);
+    PwmResult r = calculate_first_pwm(0, 0);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
 };
 void MotionControl::handle_stop_while_turning(F710LeftRight& lr) 
 {
     m_state = GS_STATIONARY;
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_first_pwm(0, 0);
+    PwmResult r = calculate_first_pwm(0, 0);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle); 
     m_buffer_callback(std::move(iobu));
 };
@@ -122,9 +147,13 @@ void MotionControl::handle_encoder_update_while_going_straight(TwoEncoderStatus&
     auto left_rpm = ec.left.motor_rpm_estimate;
     auto right_rpm = ec.right.motor_rpm_estimate;
 
-    std::tie(actual_left_throttle, actual_right_throttle) = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_right,
+    PwmResult r = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_right,
                                             actual_left_throttle, actual_right_throttle,
                                             left_rpm, right_rpm);
+    actual_left_throttle = r.left;
+    actual_right_throttle = r.right;
+    m_ratio = r.ratio;
+    m_error = r.error;
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
 
@@ -220,11 +249,13 @@ void MotionControl::dump_encoder_status(TwoEncoderStatus& ec)
     auto left_latest_actual = actual_left_throttle;
     auto right_latest_actual = actual_right_throttle;
 
-    RBL_LOG_FMT("calculate_next_pwm \n\tleft rpm: %f  \n\tright: rpm: %f\n\terror %f"
-                "\n\tactual_left_throttle: %f \n\tactual_right_throttle: %f "
-                "\n\t m_skip_encoder_count: %d",
-                left_latest_rpm, right_latest_rpm, (right_latest_rpm-left_latest_rpm),
-                left_latest_actual, right_latest_actual, m_skip_encoder_status_count
+    RBL_LOG_FMT("calculate_next_pwm \n"
+        "\tleft  rpm: %f  " "\tactual_left_throttle:  %f \n"
+        "\tright rpm: %f  " "\tactual_right_throttle: %f \n"
+        "\terror %f " "\t m_skip_encoder_count: %d \n",
+        left_latest_rpm, left_latest_actual,
+        right_latest_rpm, right_latest_actual,
+        m_error, m_skip_encoder_status_count
     );
 }
 

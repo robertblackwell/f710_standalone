@@ -48,51 +48,58 @@ IoBuffer::UPtr make_robot_reboot_command()
 }
 
 
-std::tuple<double, double> calculate_first_pwm(int f710_left, int f710_right) {
-    double l = (((double)f710_left) / (double)INT16_MAX) * 100.0;
-    double r = (((double)f710_right) / (double)INT16_MAX) * 100.0;
-    return std::tuple<double, double>{l, r};
+PwmResult calculate_first_pwm(int f710_left, int f710_right)
+{
+    double l = (((double) f710_left) / (double) INT16_MAX) * 100.0;
+    double r = (((double) f710_right) / (double) INT16_MAX) * 100.0;
+    if((f710_left == f710_right)&&(f710_left == INT16_MAX || f710_left == INT16_MIN)) {
+        r = 0.95*r;
+    }
+    return {l, r, 0.95, 0};
 };
 
-std::tuple<double, double> calculate_next_pwm(
+PwmResult calculate_next_pwm(
         int left_throttle_target, int right_throttle_target,
         double left_latest_actual, double right_latest_actual,
         double left_latest_rpm, double right_latest_rpm
 ) {
-    std::tuple<double, double> result{};
-
+    PwmResult result{};
+    auto error = right_latest_rpm - left_latest_rpm;
+    double ratio = 1.0;
     if(left_throttle_target == 0 || right_throttle_target == 0 ) {
-        result = {left_latest_actual, right_latest_actual};
-    }
-    auto ratio = left_latest_rpm / right_latest_rpm;
-    if(ratio < 1.0) {
-        // left is the slower wheel
-        auto left_higher = (right_latest_rpm/left_latest_rpm)*left_latest_actual;
-        if(left_higher <= 100.0) {
-            result = {left_higher, right_latest_actual};
-        } else {
-            auto right_lower = (left_latest_rpm/right_latest_rpm) * right_latest_actual;
-            result = {left_latest_actual, right_lower};
-        }
-    } else if (ratio > 1.0) {
-        // right is the slower wheel
-        auto right_higher = (left_latest_rpm/right_latest_rpm)*right_latest_actual;
-        if(right_higher <= 100.0) {
-            result = {left_latest_actual, right_higher};
-        } else {
-            auto left_lower = (right_latest_rpm/left_latest_rpm)*left_latest_actual;
-            result = {left_lower, right_latest_actual};
-        }
-
+        result = {left_latest_actual, right_latest_actual, 0.0, 0.0};
     } else {
-        result = {left_latest_actual, right_latest_actual};
+        ratio = left_latest_rpm / right_latest_rpm;
+        if(ratio < 1.0) {
+            // left is the slower wheel
+            auto left_higher = (right_latest_rpm/left_latest_rpm)*left_latest_actual;
+            if(left_higher <= 100.0) {
+                result = {left_higher, right_latest_actual, ratio, error};
+            } else {
+                auto right_lower = (left_latest_rpm/right_latest_rpm) * right_latest_actual;
+                result = {left_latest_actual, right_lower, ratio, error};
+            }
+        } else if (ratio > 1.0) {
+            // right is the slower wheel
+            auto right_higher = (left_latest_rpm/right_latest_rpm)*right_latest_actual;
+            if(right_higher <= 100.0) {
+                result = {left_latest_actual, right_higher, ratio, error};
+            } else {
+                auto left_lower = (right_latest_rpm/left_latest_rpm)*left_latest_actual;
+                result = {left_lower, right_latest_actual, ratio, error};
+            }
+
+        } else {
+            result = {left_latest_actual, right_latest_actual, ratio, error};
+        }
     }
-    RBL_LOG_FMT("calculate_next_pwm \n\tleft rpm: %f  \n\tright: rpm: %f\n\terror %f"
-                "\n\tactual_left_throttle: %f \n\tactual_right_throttle: %f "
-                "\n\tleft/right ratio: %f \n\tnext left_pwm: %f \n\t next right_pwm: %f",
-                left_latest_rpm, right_latest_rpm, (right_latest_rpm-left_latest_rpm),
-                left_latest_actual, right_latest_actual,
-                ratio, std::get<0>(result), std::get<1>(result)
+    RBL_LOG_FMT("calculate_next_pwm \n" 
+        "\tleft  rpm: %f " "\tactual_left_throttle : %f " "\tnext left_pwm: %f \n"
+        "\tright rpm: %f " "\tactual_right_throttle: %f " "\tnext right_pwm: %f \n"
+        "\tleft/right ratio: %f " "\terror %f\n", 
+        left_latest_rpm,  left_latest_actual,  result.left,
+        right_latest_rpm, right_latest_actual, result.right,
+        ratio, (right_latest_rpm-left_latest_rpm)
     );
     return result;
 };

@@ -48,6 +48,8 @@ private:
     int f710_target_throttle_right = 0;
     double actual_left_throttle = 0.0;
     double actual_right_throttle = 0.0;
+    double m_ratio = 0.0;
+    double m_error = 0.0;
     int m_skip_encoder_status_count;
 
     bool is_max_straight(F710LeftRight& lr);

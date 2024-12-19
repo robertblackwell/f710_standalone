@@ -15,7 +15,7 @@ set(CMAKE_SYSTEM_PROCESSOR aarch4)
 
 message("rp4-toolchain.cmake - i am here")
 
-set(rootfs $ENV{HOME}/sysroot/rp4)
+set(rootfs $ENV{HOME}/rp4-sysroot)
 set(CMAKE_SYSROOT ${rootfs_dir})
 set(CMAKE_FIND_ROOT_PATH ${rootfs_dir})
 
@@ -23,7 +23,8 @@ set(CMAKE_FIND_ROOT_PATH ${rootfs_dir})
 
 set(CMAKE_C_COMPILER /bin/aarch64-linux-gnu-gcc)
 set(CMAKE_CXX_COMPILER /bin/aarch64-linux-gnu-g++)
-
+set(CMAKE_CXX_ABI_COMPILED  Off)
+set(CMAKE_C_ABI_COMPILED  Off)
 message(c compiler ${CMAKE_C_COMPILER})
 
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)

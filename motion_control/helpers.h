@@ -2,11 +2,16 @@
 #define H_motion_control_helpers_h
 #include <tuple>
 #include <rbl/iobuffer.h>
-
+struct PwmResult {
+	double left;
+	double right;
+	double ratio;
+    double error;
+};
 bool is_max_f710_throttle(int value);
-std::tuple<double, double> calculate_first_pwm(int f710_left, int f710_right);
+PwmResult calculate_first_pwm(int f710_left, int f710_right);
 
-std::tuple<double, double> calculate_next_pwm(
+PwmResult calculate_next_pwm(
         int left_throttle_target, int right_throttle_target,
         double left_latest_actual, double right_latest_actual,
         double left_latest_rpm, double right_latest_rpm
