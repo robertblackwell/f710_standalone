@@ -13,6 +13,10 @@
 #define GS_TRANSITION_TURNING_TO_GS 4
 
 #define M_SKIP_ENCODER_STATUS_MAX_COUNT 1
+#define ENCODER_STATUS_DELAY_MS 2000
+#define ENCODER_STATUS_INTERVAL_MILLI_SECS 500
+#define F710_MAX_FORWARD 32767    // INT16_MAX
+#define F710_MAX_REVERSE -32767   // -32767 this is not INT16_MIN
 
 using namespace non_ros_msgs;
 using namespace rbl;
@@ -32,17 +36,8 @@ void MotionControl::send_threadsafe(FirmwareStartupResponse::UPtr msg)
     auto item = std::make_unique<QueueItemUPtrVariant>(std::move(msg));
     m_queue.put(std::move(item));
 }
-bool MotionControl::is_max_straight(F710LeftRight& lr) {
-        return (
-            ((lr.m_left == INT16_MAX) && (lr.m_right == INT16_MAX)) ||
-            ((lr.m_left == INT16_MIN) && (lr.m_right == INT16_MIN)));
-};
-        
-bool MotionControl::is_stop(F710LeftRight& lr) {
-    return (lr.m_left == 0 && lr.m_right == 0);
-};
-        
-bool MotionControl::is_throttle_change(F710LeftRight& lr) {
+
+bool MotionControl::is_throttle_change(F710LeftRight& lr) const {
     return (lr.m_left != f710_target_throttle_left) || (lr.m_right != f710_target_throttle_right);
 };
 void MotionControl::handle_turn_while_turning(F710LeftRight& lr) 
@@ -108,12 +103,11 @@ void MotionControl::handle_gostraight_while_stopped(F710LeftRight& lr)
     m_error = r.error;
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
-    auto iob2 = make_robot_stream_samples_command(1000);
+    auto iob2 = make_robot_stream_samples_command(ENCODER_STATUS_INTERVAL_MILLI_SECS);
     m_buffer_callback(std::move(iob2));
-    m_skip_encoder_status_count = M_SKIP_ENCODER_STATUS_MAX_COUNT;
-
+    m_skip_encoder_status_count = ENCODER_STATUS_DELAY_MS / ENCODER_STATUS_INTERVAL_MILLI_SECS;
 };
-void MotionControl::handle_stop_while_going_straight(F710LeftRight& lr) 
+void MotionControl::handle_stop_while_going_straight()
 {
     m_state = GS_STATIONARY;
     auto iob = make_robot_stream_samples_off_command();
@@ -126,7 +120,7 @@ void MotionControl::handle_stop_while_going_straight(F710LeftRight& lr)
     auto iobu = make_robot_message(actual_left_throttle, actual_right_throttle);
     m_buffer_callback(std::move(iobu));
 };
-void MotionControl::handle_stop_while_turning(F710LeftRight& lr) 
+void MotionControl::handle_stop_while_turning()
 {
     m_state = GS_STATIONARY;
     PwmResult r = calculate_first_pwm(0, 0);
@@ -146,7 +140,7 @@ void MotionControl::handle_encoder_update_while_going_straight(TwoEncoderStatus&
     }
     auto left_rpm = ec.left.motor_rpm_estimate;
     auto right_rpm = ec.right.motor_rpm_estimate;
-
+    printf("about to call calculate next pwm\n");
     PwmResult r = calculate_next_pwm(f710_target_throttle_left, f710_target_throttle_right,
                                             actual_left_throttle, actual_right_throttle,
                                             left_rpm, right_rpm);
@@ -195,7 +189,10 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
             case GS_STATIONARY: {
                 if(leftright) {
                     auto lr = *(*leftright);
-                    if(is_max_straight(lr)) {
+                    if(is_max_forward(lr)) {
+                        handle_gostraight_while_stopped(lr);
+                    } else if(is_max_reverse(lr)) {
+                        printf("Going straight backwards\n");
                         handle_gostraight_while_stopped(lr);
                     } else if(! is_stop(lr)) {
                         handle_turn_while_stopped(lr);
@@ -211,7 +208,7 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
                     if(is_max_straight(lr) && ! is_throttle_change(lr)) {
                         handle_gostraight_while_going_straight(lr);
                     } else if(is_stop(lr)) {
-                        handle_stop_while_going_straight(lr);
+                        handle_stop_while_going_straight();
                     } else if(is_max_straight(lr) && (is_throttle_change(lr))) {
                         // just stop - next f710 input will fix it
                     } else {
@@ -228,7 +225,7 @@ void MotionControl::run(std::function<void(IoBuffer::UPtr iobuptr)> buffer_callb
                     if(is_max_straight(lr)) {
                         handle_gostraight_while_turning(lr);
                     } else if(is_stop(lr)) {
-                        handle_stop_while_turning(lr);
+                        handle_stop_while_turning();
                     } else {
                         handle_turn_while_turning(lr);
                     }
@@ -252,10 +249,10 @@ void MotionControl::dump_encoder_status(TwoEncoderStatus& ec)
     RBL_LOG_FMT("calculate_next_pwm \n"
         "\tleft  rpm: %f  " "\tactual_left_throttle:  %f \n"
         "\tright rpm: %f  " "\tactual_right_throttle: %f \n"
-        "\terror %f " "\t m_skip_encoder_count: %d \n",
+        "\tration: %f \terror %f \t m_skip_encoder_count: %d \n",
         left_latest_rpm, left_latest_actual,
         right_latest_rpm, right_latest_actual,
-        m_error, m_skip_encoder_status_count
+        m_ratio, m_error, m_skip_encoder_status_count
     );
 }
 

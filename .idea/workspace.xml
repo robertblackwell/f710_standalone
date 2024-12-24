@@ -17,6 +17,7 @@
       <config projectName="f710" targetName="f710_controller_v1" />
       <config projectName="f710" targetName="test_cv_queue" />
       <config projectName="f710" targetName="applib" />
+      <config projectName="f710" targetName="serial_monitor" />
       <config projectName="f710" targetName="f710_demo" />
       <config projectName="f710" targetName="f710_controller_v2" />
       <config projectName="f710" targetName="serial_test_app" />
@@ -31,12 +32,14 @@
     <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_link.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_link.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/motion_control/helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/helpers.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/motion_control/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/helpers.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/motion_control/motion_control.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/motion_control.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/motion_control/motion_control.h" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/motion_control.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/rp4-toolchain.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/rp4-toolchain.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serial_test_app/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/serial_test_app/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,35 +68,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;standalone&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;CPPToolchains&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.f710_controller_v2.executor": "Debug",
+    "CMake Application.serial_monitor.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "standalone",
+    "last_opened_file_path": "/home/robert/Projects/f710-standalone/serial_control_gui",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "Errors",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/serial_control_gui" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/vendor" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.f710_controller_v1">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+  <component name="RunManager" selected="CMake Application.serial_monitor">
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="applib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="applib" CONFIG_NAME="Debug">
@@ -116,6 +125,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="serial_monitor" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="serial_monitor" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="f710" RUN_TARGET_NAME="serial_monitor">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="serial_test_app" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="serial_test_app" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="f710" RUN_TARGET_NAME="serial_test_app">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -131,6 +145,7 @@
       <item itemvalue="CMake Application.f710_controller_v1" />
       <item itemvalue="CMake Application.f710_controller_v2" />
       <item itemvalue="CMake Application.f710_demo" />
+      <item itemvalue="CMake Application.serial_monitor" />
       <item itemvalue="CMake Application.serial_test_app" />
       <item itemvalue="CMake Application.test_cv_queue" />
     </list>
@@ -145,7 +160,8 @@
       <updated>1734480950335</updated>
       <workItem from="1734480951896" duration="6966000" />
       <workItem from="1734502882877" duration="325000" />
-      <workItem from="1734585495942" duration="1963000" />
+      <workItem from="1734585495942" duration="18130000" />
+      <workItem from="1735006699984" duration="5020000" />
     </task>
     <servers />
   </component>
@@ -156,5 +172,40 @@
     <isAutomaticCheckingOnLaunch value="false" />
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/motion_control/motion_control.cpp</url>
+          <line>107</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/serial_monitor/background_thread.cpp</url>
+          <line>62</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/bridge_lib/serial_link.cpp</url>
+          <line>68</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/bridge_lib/serial_link.cpp</url>
+          <line>108</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/serial_monitor/main.cpp</url>
+          <line>128</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

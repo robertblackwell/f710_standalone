@@ -29,7 +29,7 @@ namespace serial_bridge {
          *
          * If any that fails it sleeps for a second and then tries again forever.
          */
-        void run(OnRecvCallback  cb);
+        [[noreturn]] void run(OnRecvCallback  cb);
 
 #if 0
 //        rclcpp::Logger get_logger();

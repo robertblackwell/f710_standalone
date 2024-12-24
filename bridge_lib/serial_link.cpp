@@ -105,7 +105,12 @@ void serial_bridge::SerialLink::run(OnRecvCallback on_recv_callback)
                 } else {
                     // printf("serial_link::run about to try write\n");
 //                    auto x = FD_ISSET(m_output_queue_fd, &m_rfds);
-                    this->try_write();
+                    if(FD_ISSET(m_output_queue_fd, &m_rfds)) {
+                        this->try_write();
+                    }
+                    if(m_write_buffer_uptr) {
+                        this->try_write();
+                    }
                     if (FD_ISSET(m_serial_fd, &m_rfds)) {
                         this->try_read();
                     }

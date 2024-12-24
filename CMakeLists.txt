@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.8)
-project(cpp_serial_bridge LANGUAGES CXX C  VERSION 0.0.1)
+project(f710 LANGUAGES CXX C  VERSION 0.0.1)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic -std=gnu++20)
@@ -10,13 +10,14 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 message(" c compiler ${CMAKE_C_COMPILER}")
 
-project(f710
-    VERSION 0.0.1
-    DESCRIPTION "Standalone (non-ROS) Logitech F710 gampad controller"
-    LANGUAGES CXX
-)
 set(CMAKE_CXX_ABI_COMPILED  Off)
 set(CMAKE_C_ABI_COMPILED  Off)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(GTK4 REQUIRED gtk4)
+set(CMAKE_BUILD_TYPE Debug)
+message("gtk4_include_dirs  ${GTK4_INCLUDE_DIRS}")
+message("gtk4_library_dirs  ${GTK4_LIBRARY_DIRS}")
+message("gtk4_cflags        ${GTK4_CFLAGS_OTHER}")
 
 # set(CMAKE_C_COMPILER clang)
 # set(CMAKE_CXX_COMPILER clang)
@@ -98,4 +99,5 @@ add_subdirectory(f710_demo)
 add_subdirectory(f710_control_v1)
 add_subdirectory(f710_control_v2)
 add_subdirectory(serial_test_app)
+add_subdirectory(serial_monitor)
 add_subdirectory(tests)

@@ -30,3 +30,7 @@ Cross compiling for rpi4
 [https://hackaday.com/2016/09/01/how-to-use-docker-to-cross-compile-for-raspberry-pi-and-more/](https://hackaday.com/2016/09/01/how-to-use-docker-to-cross-compile-for-raspberry-pi-and-more/)
 
 [https://github.com/philippe44/cross-compiling/tree/master](https://github.com/philippe44/cross-compiling/tree/master)
+
+[https://fodor.org/2021/08/02/cpp-gtk4-gui.html](https://fodor.org/2021/08/02/cpp-gtk4-gui.html)
+
+[https://www.gtk.org/docs/installations/linux/](https://www.gtk.org/docs/installations/linux/)

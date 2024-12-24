@@ -52,9 +52,11 @@ private:
     double m_error = 0.0;
     int m_skip_encoder_status_count;
 
-    bool is_max_straight(F710LeftRight& lr);
-    bool is_stop(F710LeftRight& lr);
-    bool is_throttle_change(F710LeftRight& lr);
+//    bool is_max_straight(F710LeftRight& lr);
+//    bool is_max_forward(F710LeftRight& lr);
+//    bool is_max_reverse(F710LeftRight& lr);
+//    bool is_stop(F710LeftRight& lr);
+    bool is_throttle_change(F710LeftRight& lr) const;
     /**
      * handle turn
         */
@@ -70,8 +72,8 @@ private:
      /**
      * handle stop
      */
-    void handle_stop_while_going_straight(F710LeftRight& lr);
-    void handle_stop_while_turning(F710LeftRight& lr);
+    void handle_stop_while_going_straight();
+    void handle_stop_while_turning();
     /**
      * handle encoder update
      */

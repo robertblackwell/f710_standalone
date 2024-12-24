@@ -4,14 +4,14 @@
 #define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
 #include <rbl/iobuffer.h>
+#include <non_ros_messages/msg_struct.h>
+#include <non_ros_messages/msgs.h>
 #include "helpers.h"
+#define F710_MAX_FORWARD (32767)    // INT16_MAX
+#define F710_MAX_REVERSE (-32767)   // -32767 this is not INT16_MIN
 
 using namespace rbl;
 
-bool is_max_f710_throttle(int value)
-{
-    return (value == INT16_MAX) || (value == INT16_MIN);
-}
 
 double round_to(double value, double precision)
 {
@@ -47,14 +47,91 @@ IoBuffer::UPtr make_robot_reboot_command()
     return iob;
 }
 
+bool is_max_f710_throttle(int value)
+{
+    return (value >= F710_MAX_FORWARD) || (value <= F710_MAX_REVERSE);
+}
+bool is_max_forward(F710LeftRight& lr)
+{
+    return is_max_forward(lr.m_left, lr.m_right);
+}
+bool is_max_reverse(F710LeftRight& lr)
+{
+    return is_max_reverse(lr.m_left, lr.m_right);
+}
+bool is_max_straight(F710LeftRight& lr)
+{
+    return is_max_straight(lr.m_left, lr.m_right);
+};
+bool is_stop(F710LeftRight& lr)
+{
+    return is_stop(lr.m_left, lr.m_right);
+};
+bool is_max_straight(int f710_left, int f710_right)
+{
+    return is_max_forward(f710_left, f710_right) || is_max_reverse(f710_left, f710_right);
+}
+bool is_side_max_forward(int f710_side)
+{
+    return (f710_side >= F710_MAX_FORWARD);
+}
+bool is_side_max_reverse(int f710_side)
+{
+    return (f710_side <= F710_MAX_REVERSE);
+}
+bool is_side_stop(int f710_side)
+{
+    return (f710_side == 0);
+}
+bool is_max_forward(int f710_left, int f710_right)
+{
+    return is_side_max_forward(f710_left) && is_side_max_forward(f710_right);
+}
+bool is_max_reverse(int f710_left, int f710_right)
+{
+    return is_side_max_reverse(f710_left) && is_side_max_reverse(f710_right);
+}
+bool is_stop(int f710_left, int f710_right)
+{
+    return is_side_stop(f710_left) && is_side_stop(f710_right);
+}
+
+/**
+ * Converts a reading from a f710 control stick -32767 .. 32767 into a pwm percentage reading.
+ *
+ * Negative stick readings become -ve percentages.
+ *
+ * Percentages are in the range -100.0 .. -35.00 35.00 .. 100.0
+ */
+double f7102pwm(int f710_stick_reading)
+{
+    double value = 0;
+    if(f710_stick_reading == 0)
+        return value;
+    if(f710_stick_reading > 0) {
+        value = 35.0 + (
+                std::min(1.0, (((double) f710_stick_reading) / (double) F710_MAX_FORWARD)) * (100.0 - 35.0));
+        return value;
+    }
+    return -35.0 - (
+                std::min(1.0, (((double) f710_stick_reading) / (double) F710_MAX_REVERSE)) * (100.0 - 35.0));
+}
 
 PwmResult calculate_first_pwm(int f710_left, int f710_right)
 {
-    double l = (((double) f710_left) / (double) INT16_MAX) * 100.0;
-    double r = (((double) f710_right) / (double) INT16_MAX) * 100.0;
-    if((f710_left == f710_right)&&(f710_left == INT16_MAX || f710_left == INT16_MIN)) {
-        r = 0.95*r;
+    double l, r;
+    if(is_max_forward(f710_left, f710_right)) {
+        r = 95.0;
+        l = 100.0;
+    } else if(is_max_reverse(f710_left, f710_right)) {
+        l = -100.0;
+        r = -95.0;
+    } else {
+        l = f7102pwm(f710_left);
+        r = f7102pwm(f710_right);
     }
+    printf("calculate_first_pwm f710_left: %d f710_right: %d pwm_left: %f pwm_right: %f\n",
+            f710_left, f710_right, l, r);
     return {l, r, 0.95, 0};
 };
 
@@ -73,7 +150,7 @@ PwmResult calculate_next_pwm(
         if(ratio < 1.0) {
             // left is the slower wheel
             auto left_higher = (right_latest_rpm/left_latest_rpm)*left_latest_actual;
-            if(left_higher <= 100.0) {
+            if(left_higher <= 100.0 && left_higher >= -100.00) {
                 result = {left_higher, right_latest_actual, ratio, error};
             } else {
                 auto right_lower = (left_latest_rpm/right_latest_rpm) * right_latest_actual;
@@ -82,7 +159,7 @@ PwmResult calculate_next_pwm(
         } else if (ratio > 1.0) {
             // right is the slower wheel
             auto right_higher = (left_latest_rpm/right_latest_rpm)*right_latest_actual;
-            if(right_higher <= 100.0) {
+            if(right_higher <= 100.0 && right_higher >= -100.0) {
                 result = {left_latest_actual, right_higher, ratio, error};
             } else {
                 auto left_lower = (right_latest_rpm/left_latest_rpm)*left_latest_actual;

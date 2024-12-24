@@ -15,9 +15,6 @@
 using namespace serial_bridge;
 using namespace f710;
 
-static IoBuffer::UPtr make_robot_message(int left, int right);
-static std::string make_outputter_message(int left, int right);
-
 int main()
 {
 
@@ -44,24 +41,3 @@ int main()
 	return 0;
 }
 
-static IoBuffer::UPtr make_robot_message(int left, int right)
-{
-    auto left_percent = (float)round(((float)(left) / (float)INT16_MAX) * 100.0);
-    auto right_percent = (float)round(((float)(right) / (float)INT16_MAX) * 100.0);
-    IoBuffer::UPtr iob = std::make_unique<IoBuffer>(256);
-    int len = snprintf(iob->get_first_char_ptr(), 256, "pwm %f %f \n ", left_percent, right_percent);
-    iob->setSize(len);
-    return iob;
-}
-static std::string make_outputter_message(int left, int right)
-{
-    char* bufptr; 
-    asprintf(&bufptr, "left: %d  right: %d", left, right);
-    auto s = std::string(bufptr);
-    free(bufptr);
-    return s;
-//    IoBuffer::UPtr iob = std::make_unique<IoBuffer>(256);
-//    int len = snprintf(iob->get_first_char_ptr(), 256, "received %d %d  ", left, right);
-//    iob->setSize(len);
-//    return iob;
-}
