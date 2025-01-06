@@ -15,6 +15,7 @@
   <component name="CMakeRunConfigurationManager">
     <generated>
       <config projectName="f710" targetName="f710_controller_v1" />
+      <config projectName="f710" targetName="test_twist_drive" />
       <config projectName="f710" targetName="test_cv_queue" />
       <config projectName="f710" targetName="applib" />
       <config projectName="f710" targetName="serial_monitor" />
@@ -30,16 +31,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/tests/test_twist_drive/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_twist_drive/test_twist_drive.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_controller_v1/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_controller_v1/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_controller_v1/outputter.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_controller_v1/outputter.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_drive/interpret_f710_helpers.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/twist_drive/interpret_f710_helpers.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_link.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_link.h" beforeDir="false" afterPath="$PROJECT_DIR$/bridge_lib/serial_link.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/helpers.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/helpers.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/motion_control.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/motion_control.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/motion_control.h" beforeDir="false" afterPath="$PROJECT_DIR$/motion_control/motion_control.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/serial_test_app/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CMakeLists.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +82,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "standalone",
-    "last_opened_file_path": "/home/robert/Projects/f710-standalone/serial_control_gui",
+    "last_opened_file_path": "/home/robert/Projects/f710-standalone/tests",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -92,6 +94,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/twist_drive" />
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/serial_control_gui" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -100,9 +105,9 @@
     </key>
   </component>
   <component name="RunManager" selected="CMake Application.serial_monitor">
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration name="applib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="applib" CONFIG_NAME="Debug">
@@ -140,6 +145,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="test_twist_drive" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="f710" TARGET_NAME="test_twist_drive" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="f710" RUN_TARGET_NAME="test_twist_drive">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="CMake Application.applib" />
       <item itemvalue="CMake Application.f710_controller_v1" />
@@ -148,6 +158,7 @@
       <item itemvalue="CMake Application.serial_monitor" />
       <item itemvalue="CMake Application.serial_test_app" />
       <item itemvalue="CMake Application.test_cv_queue" />
+      <item itemvalue="CMake Application.test_twist_drive" />
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -161,7 +172,15 @@
       <workItem from="1734480951896" duration="6966000" />
       <workItem from="1734502882877" duration="325000" />
       <workItem from="1734585495942" duration="18130000" />
-      <workItem from="1735006699984" duration="5020000" />
+      <workItem from="1735006699984" duration="6279000" />
+      <workItem from="1735701235255" duration="3974000" />
+      <workItem from="1735709169143" duration="3756000" />
+      <workItem from="1735713585354" duration="665000" />
+      <workItem from="1735714297361" duration="892000" />
+      <workItem from="1735720873697" duration="294000" />
+      <workItem from="1735721350670" duration="2125000" />
+      <workItem from="1735967631804" duration="1573000" />
+      <workItem from="1736117619001" duration="8124000" />
     </task>
     <servers />
   </component>
@@ -200,6 +219,11 @@
           <url>file://$PROJECT_DIR$/serial_monitor/main.cpp</url>
           <line>128</line>
           <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/twist_drive/twist_drive.h</url>
+          <line>8</line>
+          <option name="timeStamp" value="7" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
