@@ -40,13 +40,14 @@ scripts/cloned_repos/*.tar.gz
 .bundle
 iinstall/
 build/
+
 build/Build
 build/DerivedData
 build/
 cmake-debug-build/
 cmake-build-debug/
 rp4-build
-
+rpi4-build
 **/build/
 **/cmake-debug-build/
 **/cmake-build-debug/

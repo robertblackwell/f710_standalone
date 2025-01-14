@@ -8,18 +8,17 @@
 # As a result they are located in `/bin` and the associated libraries are in
 # '/usr/lib'
 # 
-set(CMAKE_VERBOSE_MAKEFILE ON)
+# set(CMAKE_VERBOSE_MAKEFILE ON)
 
 set(CMAKE_SYSTEM_NAME Linux)
 set(CMAKE_SYSTEM_PROCESSOR aarch4)
 
 message("rp4-toolchain.cmake - i am here")
 
-set(rootfs $ENV{HOME}/rp4-sysroot)
+set(tools /bin)
+set(rootfs_dir $ENV{HOME}/rp4-sysroot)
 set(CMAKE_SYSROOT ${rootfs_dir})
 set(CMAKE_FIND_ROOT_PATH ${rootfs_dir})
-
-#set(CMAKE_STAGING_PREFIX /home/cmake-test-cross-compile/stage)
 
 set(CMAKE_C_COMPILER /bin/aarch64-linux-gnu-gcc)
 set(CMAKE_CXX_COMPILER /bin/aarch64-linux-gnu-g++)
@@ -31,3 +30,5 @@ set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
+
+message("toolchain ended")
