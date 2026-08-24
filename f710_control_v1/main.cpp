@@ -9,14 +9,12 @@
 #include <rbl/iobuffer.h>
 #include <non_ros_messages/msg_struct.h>
 #include <non_ros_messages/msgs.h>
-#include <bridge_lib/serial_link.h>
+#include <bridge_lib/threaded/serial_link.h>
+#include <bridge_lib/threaded/outputter.h>
 #include <bridge_lib/serial_settings.h>
 #include <rbl/simple_exit_guard.h>
-#include "outputter.h"
 
-
-
-using namespace serial_bridge;
+using namespace bridge::threaded;
 using namespace f710;
 using namespace rbl;
 
@@ -26,7 +24,7 @@ static IoBuffer::UPtr make_robot_velocity_message(int left, int right);
 static IoBuffer::UPtr make_robot_read_encoder_message();
 static std::string make_outputter_message(int left, int right);
 static bool change_is_material(int old_left, int old_right, int new_left, int new_right, float margin);
-static void handle_incoming_msg(Outputter& outputter, IoBuffer::UPtr iob_uptr);
+static void handle_incoming_msg(Outputter& outputter, rbl::IoBuffer::UPtr iob_uptr);
 
 int main()
 {
@@ -158,7 +156,7 @@ static void handle_incoming_msg(Outputter& outputter, IoBuffer::UPtr iob_uptr)
     std::visit(msg_overload{
         [&](non_ros_msgs::FirmwareStartupResponse::UPtr& msg){default_action();},
         [&](non_ros_msgs::TwoEncoderStatus::UPtr& msg){
-            auto fmtmsg = std::format("wheel speed m/s left: {} right: {} precent diff: {}\n", 
+            auto fmtmsg = std::format("wheel speed m/s left: {} right: {} precent diff:  {}\n", 
                 msg->left.wheel_speed_mps, msg->right.wheel_speed_mps, 
                 100.0*((msg->left.wheel_speed_mps - msg->right.wheel_speed_mps)/(msg->left.wheel_speed_mps)));
             outputter.send_threadsafe(fmtmsg);

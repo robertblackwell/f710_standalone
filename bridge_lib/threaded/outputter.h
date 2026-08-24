@@ -5,6 +5,7 @@
 #include <rbl/iobuffer.h>
 #include <rbl/cv_queue.h>
 
+namespace bridge::threaded {
 class Outputter
 {
 public:
@@ -15,6 +16,6 @@ public:
 private:
     ConditionVariableQueue<std::string> m_queue;
 };
-
+}
 
 #endif //F710_OUTPUTTER_H

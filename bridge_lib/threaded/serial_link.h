@@ -7,11 +7,11 @@
 #include <rbl/queue.h>
 #include <rbl/iobuffer.h>
 
-using namespace rbl;
-namespace serial_bridge {
+// using namespace rbl;
+namespace bridge::threaded {
     class SerialLink {
     public:
-    typedef std::function<void(IoBuffer::UPtr)>  OnRecvCallback;
+    typedef std::function<void(rbl::IoBuffer::UPtr)>  OnRecvCallback;
     typedef std::unique_ptr<SerialLink>          UPtr; 
         /**
          * The constructor only initializes a few member variables.
@@ -20,7 +20,7 @@ namespace serial_bridge {
         explicit SerialLink();
         ~SerialLink();
 
-        void send_threadsafe(IoBuffer::UPtr buffer_uptr) const;
+        void send_threadsafe(rbl::IoBuffer::UPtr buffer_uptr) const;
         /**
          * SerialLink::run() tries to open the first device it finds where the path starts with
          * /dev/ttyACM and is a tty
@@ -38,8 +38,8 @@ namespace serial_bridge {
 //        rclcpp::Node*                      m_companion_node_ptr;
 //        rclcpp::GuardCondition::SharedPtr  m_guard_condition_sptr;
 #endif
-        std::unique_ptr<threadsafe::FdQueue<IoBuffer::UPtr>>      m_output_queue_uptr;
-        std::unique_ptr<threadsafe::TriggerQueue<IoBuffer::UPtr>> m_client_queue_uptr;
+        std::unique_ptr<threadsafe::FdQueue<rbl::IoBuffer::UPtr>>      m_output_queue_uptr;
+        std::unique_ptr<threadsafe::TriggerQueue<rbl::IoBuffer::UPtr>> m_client_queue_uptr;
 
         OnRecvCallback                     m_recv_callback;
         
@@ -52,9 +52,9 @@ namespace serial_bridge {
         struct timeval      tv;
         bool                m_read_eagained_flag;
 
-        IoBuffer::UPtr      m_write_buffer_uptr;        //holds the ddata bytes that are currenty being written
-        IoBuffer::UPtr      m_read_buffer_uptr;         // holds the databytes that have been read but not processed into messages
-        IoBuffer::UPtr      m_input_message_buffer_uptr; // holds the bytes that have been processd from m_read_buffer into the
+        rbl::IoBuffer::UPtr      m_write_buffer_uptr;        //holds the ddata bytes that are currenty being written
+        rbl::IoBuffer::UPtr      m_read_buffer_uptr;         // holds the databytes that have been read but not processed into messages
+        rbl::IoBuffer::UPtr      m_input_message_buffer_uptr; // holds the bytes that have been processd from m_read_buffer into the
         
         void try_write();
         void try_read();

@@ -9,13 +9,13 @@
 #define RBL_LOG_ENABLED
 #define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
-#include "asio_serial_bridge.h"
+#include "serial_bridge.h"
 #include "serial_settings.h"
 
 #define CARRIAGE_RETURN '\r'
 #define LINE_FEED '\n'
 
-asio_serial_bridge::SerialLink::SerialLink(boost::asio::io_context& io_context): m_io_context(io_context), m_serial_stream(io_context)
+bridge::asio::SerialLink::SerialLink(boost::asio::io_context& io_context): m_io_context(io_context), m_serial_stream(io_context)
 {
     m_serial_fd = -1;
 
@@ -23,11 +23,11 @@ asio_serial_bridge::SerialLink::SerialLink(boost::asio::io_context& io_context):
     m_nbr_fds = std::max(m_serial_fd, m_output_queue_fd) + 1;
     m_write_buffer_uptr = nullptr;
 }
-asio_serial_bridge::SerialLink::~SerialLink()
+bridge::asio::SerialLink::~SerialLink()
 {
     close(m_serial_fd);
 }
-void asio_serial_bridge::SerialLink::run(OnRecvCallback on_recv_callback)
+void bridge::asio::SerialLink::run(OnRecvCallback on_recv_callback)
 {
     m_recv_callback = std::move(on_recv_callback);
     //
@@ -62,9 +62,9 @@ void asio_serial_bridge::SerialLink::run(OnRecvCallback on_recv_callback)
         start_writes();
     });
 }
-void asio_serial_bridge::SerialLink::start_read()
+void bridge::asio::SerialLink::start_read()
 {
-    m_input_message_buffer_uptr = std::make_unique<IoBuffer>();
+    m_input_message_buffer_uptr = std::make_unique<rbl::IoBuffer>();
     boost::asio::async_read_until(m_serial_stream, m_read_streambuf, '\n', 
         [this](const boost::system::error_code& ec, std::size_t bytes_transfered){
             if(!ec) {
@@ -73,7 +73,7 @@ void asio_serial_bridge::SerialLink::start_read()
                 auto bufs_end = bufs_begin + bytes_transfered;
                 std::string s(bufs_begin, bufs_end);
                 m_read_streambuf.consume(bytes_transfered);
-                auto iob = std::make_unique<IoBuffer>(s);
+                auto iob = std::make_unique<rbl::IoBuffer>(s);
                 m_recv_callback(std::move(iob));
             } else {
                 std::cerr << "Log serial error: " << ec.message() << "\n";
@@ -81,7 +81,7 @@ void asio_serial_bridge::SerialLink::start_read()
             start_read();
         });
 }
-void asio_serial_bridge::SerialLink::start_writes()
+void bridge::asio::SerialLink::start_writes()
 {
     if(m_output_queue.empty()) {
         return;
@@ -103,7 +103,7 @@ void asio_serial_bridge::SerialLink::start_writes()
             start_writes();
     });
 }
-void asio_serial_bridge::SerialLink::send_threadsafe(IoBuffer::UPtr buffer_uptr)
+void bridge::asio::SerialLink::send_threadsafe(rbl::IoBuffer::UPtr buffer_uptr)
 {
     auto up = std::make_unique<std::string>(buffer_uptr->c_str());
     m_output_queue.push_back(std::move(buffer_uptr));

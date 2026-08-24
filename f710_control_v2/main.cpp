@@ -9,14 +9,12 @@
 #include <motion_control/motion_control.h>
 #include <rbl/std_format.h>
 #include <rbl/iobuffer.h>
-#include <bridge_lib/serial_link.h>
+#include <bridge_lib/threaded/serial_link.h>
+#include <bridge_lib/threaded/outputter.h>
 #include <bridge_lib/serial_settings.h>
 #include <rbl/simple_exit_guard.h>
-#include "outputter.h"
 
-
-
-using namespace serial_bridge;
+using namespace bridge::threaded;
 using namespace f710;
 using namespace non_ros_msgs;
 

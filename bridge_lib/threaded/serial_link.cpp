@@ -9,12 +9,12 @@
 #define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
 #include "serial_link.h"
-#include "serial_settings.h"
+#include "../serial_settings.h"
 
 #define CARRIAGE_RETURN '\r'
 #define LINE_FEED '\n'
 
-serial_bridge::SerialLink::SerialLink(): m_rfds({0}), m_wfds({0}),m_xfds({0}),tv({0,0}),m_read_eagained_flag(false)
+bridge::threaded::SerialLink::SerialLink(): m_rfds({0}), m_wfds({0}),m_xfds({0}),tv({0,0}),m_read_eagained_flag(false)
 {
     m_serial_fd = -1;
 
@@ -34,22 +34,22 @@ serial_bridge::SerialLink::SerialLink(): m_rfds({0}), m_wfds({0}),m_xfds({0}),tv
     m_client_queue_uptr = std::make_unique<threadsafe::TriggerQueue<IoBuffer::UPtr>>(std::bind(&SerialLink::guard_trigger_function, this));
 #endif
     m_recv_callback = nullptr;
-    m_output_queue_uptr = std::make_unique<threadsafe::FdQueue<IoBuffer::UPtr>>();
+    m_output_queue_uptr = std::make_unique<threadsafe::FdQueue<rbl::IoBuffer::UPtr>>();
     m_output_queue_fd = m_output_queue_uptr->read_fileno();
     m_nbr_fds = std::max(m_serial_fd, m_output_queue_fd) + 1;
     m_read_buffer_uptr  = nullptr;
     m_write_buffer_uptr = nullptr;
 }
-serial_bridge::SerialLink::~SerialLink()
+bridge::threaded::SerialLink::~SerialLink()
 {
     close(m_serial_fd);
 }
 #if 0
-//void serial_bridge::SerialLink::guard_trigger_function()
+//void bridge::threaded::SerialLink::guard_trigger_function()
 //{
 //    m_guard_condition_sptr->trigger();
 //}
-void serial_bridge::SerialLink::guard_condition_callback([[maybe_unused]]std::size_t n)
+void bridge::threaded::SerialLink::guard_condition_callback([[maybe_unused]]std::size_t n)
 {
     IoBuffer::UPtr input_buffer_uptr  = std::make_unique<IoBuffer>();
     bool gotone = m_client_queue_uptr->get_nowait(input_buffer_uptr);
@@ -58,17 +58,17 @@ void serial_bridge::SerialLink::guard_condition_callback([[maybe_unused]]std::si
     }
     return;
 }
-rclcpp::Logger serial_bridge::SerialLink::get_logger()
+rclcpp::Logger bridge::threaded::SerialLink::get_logger()
 {
     return m_companion_node_ptr->get_logger();
 }
 #endif
-void serial_bridge::SerialLink::send_threadsafe(IoBuffer::UPtr buffer_uptr) const
+void bridge::threaded::SerialLink::send_threadsafe(rbl::IoBuffer::UPtr buffer_uptr) const
 {
     // printf("send_threadsafe msg: %s\n", msg.c_str());
     m_output_queue_uptr->put(std::move(buffer_uptr));
 }
-void serial_bridge::SerialLink::run(OnRecvCallback on_recv_callback)
+void bridge::threaded::SerialLink::run(OnRecvCallback on_recv_callback)
 {
     int             retval;
     m_recv_callback = std::move(on_recv_callback);
@@ -133,7 +133,7 @@ void serial_bridge::SerialLink::run(OnRecvCallback on_recv_callback)
 /**
  * The next 2 functions need a serious cleanup - maybe present the logic as nested FSM
 */
-void serial_bridge::SerialLink::try_write() 
+void bridge::threaded::SerialLink::try_write() 
 {
     FD_CLR(m_serial_fd, &m_wfds);
     if(m_write_buffer_uptr == nullptr) {
@@ -164,13 +164,13 @@ void serial_bridge::SerialLink::try_write()
         }
     }
 }
-void serial_bridge::SerialLink::try_read() 
+void bridge::threaded::SerialLink::try_read() 
 {
     if((m_read_buffer_uptr != nullptr) && (!m_read_buffer_uptr->empty())) {
         // printf("m_read_buffer_uptr is not null and not empty\n");
         return;
     }
-    m_read_buffer_uptr = std::make_unique<IoBuffer>();
+    m_read_buffer_uptr = std::make_unique<rbl::IoBuffer>();
     if(m_read_buffer_uptr->empty()) {
         // only do more reading when the read buffer has been processed to empty
         // auto b = m_read_buffer.space_ptr();
@@ -196,7 +196,7 @@ void serial_bridge::SerialLink::try_read()
 
     if(m_read_buffer_uptr && (! m_read_buffer_uptr->empty())) {
         if(!m_input_message_buffer_uptr)
-            m_input_message_buffer_uptr = std::make_unique<IoBuffer>();
+            m_input_message_buffer_uptr = std::make_unique<rbl::IoBuffer>();
         char* p;
         while((! m_read_buffer_uptr->empty()) && (p = m_read_buffer_uptr->get_first_char_ptr()) != nullptr) {
             char ch = *p;
@@ -210,7 +210,7 @@ void serial_bridge::SerialLink::try_read()
                     m_recv_callback(std::move(m_input_message_buffer_uptr));
                     m_input_message_buffer_uptr = nullptr;
 //                    std::size_t qn = m_client_queue_uptr->put(std::move(m_input_message_buffer_uptr));
-                    m_input_message_buffer_uptr = std::make_unique<IoBuffer>();
+                    m_input_message_buffer_uptr = std::make_unique<rbl::IoBuffer>();
                 }
             } else {
                 m_input_message_buffer_uptr->append(&ch, 1);

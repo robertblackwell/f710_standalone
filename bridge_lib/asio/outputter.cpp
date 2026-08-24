@@ -1,14 +1,18 @@
 #include <unistd.h>
-#include "asio_outputter.h"
+#include "asio/outputter.h"
 
-Outputter::Outputter(boost::asio::io_context& io_context): m_io_context(io_context), m_stdin_stream(io_context){}
-Outputter::~Outputter() = default;
+bridge::asio::Outputter::Outputter(boost::asio::io_context& io_context): m_io_context(io_context), m_stdin_stream(io_context){}
+bridge::asio::Outputter::~Outputter() = default;
 
-void Outputter::send_threadsafe(std::string msg)
+void bridge::asio::Outputter::send_threadsafe(std::string& msg)
 {
+    auto buffer_uptr = std::make_unique<rbl::IoBuffer>(msg);
+    auto up = std::make_unique<std::string>(buffer_uptr->c_str());
+    m_output_queue.push_back(std::move(buffer_uptr));
+    start_write();
 }
 
-void Outputter::run()
+void bridge::asio::Outputter::run()
 {
     boost::system::error_code ec;
     m_stdin_stream.assign(STDIN_FILENO, ec);
@@ -19,7 +23,7 @@ void Outputter::run()
         start_write();
     });
 }
-void Outputter::start_write()
+void bridge::asio::Outputter::start_write()
 {
     if(m_output_queue.empty()) {
         return;

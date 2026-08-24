@@ -31,7 +31,7 @@ set(TWIST_DRIVE_DIR ${PROJECT_SOURCE_DIR}/twist_drive)
 set(NON_ROS_MSGS_DIR ${PROJECT_SOURCE_DIR}/non_ros_messages)
 set(JSONCONS_INCLUDE_DIR vendor/include)
 
-set(F710_SRC
+set(F710_THREADED
         ${F710_DIR}/src/f710.cpp
         ${F710_DIR}/src/f710.h
         ${F710_DIR}/src/f710_exceptions.h
@@ -40,6 +40,16 @@ set(F710_SRC
 #        ${F710_DIR}/src/f710_original.cpp
         ${F710_DIR}/src/f710_time.h
 )
+set(F710_ASIO
+        ${F710_DIR}/src/f710.cpp
+        ${F710_DIR}/src/f710.h
+        ${F710_DIR}/src/f710_exceptions.h
+        ${F710_DIR}/src/f710_helpers.cpp
+        ${F710_DIR}/src/f710_helpers.h
+#        ${F710_DIR}/src/f710_original.cpp
+        ${F710_DIR}/src/f710_time.h
+)
+
 set(RBL_SRC
         ${RBL_DIR}/logger.cpp
         ${RBL_DIR}/logger.h
@@ -54,12 +64,18 @@ set(RBL_SRC
 set(BRIDGE_LIB_SRC
         ${BRIDGE_LIB_DIR}/fd_functions.h
         ${BRIDGE_LIB_DIR}/fd_functions.cpp
-        ${BRIDGE_LIB_DIR}/serial_link.h
-        ${BRIDGE_LIB_DIR}/serial_link.cpp
-        ${BRIDGE_LIB_DIR}/asio_serial_bridge.h
-        ${BRIDGE_LIB_DIR}/asio_serial_bridge.cpp
         ${BRIDGE_LIB_DIR}/serial_settings.h
         ${BRIDGE_LIB_DIR}/serial_settings.cpp
+
+        ${BRIDGE_LIB_DIR}/threaded/serial_link.h
+        ${BRIDGE_LIB_DIR}/threaded/serial_link.cpp
+        ${BRIDGE_LIB_DIR}/threaded/outputter.h
+        ${BRIDGE_LIB_DIR}/threaded/outputter.cpp
+
+        ${BRIDGE_LIB_DIR}/asio/serial_bridge.h
+        ${BRIDGE_LIB_DIR}/asio/serial_bridge.cpp
+        ${BRIDGE_LIB_DIR}/asio/outputter.h
+        ${BRIDGE_LIB_DIR}/asio/outputter.cpp
 )
 set(MOTION_CONTROL_SRC
         ${MOTION_CONTROL_DIR}/helpers.h
@@ -73,13 +89,14 @@ set(NON_ROS_MSGS_SRC
         ${NON_ROS_MSGS_DIR}/msgs.cpp
 )
 set(LIB_SRC
-        ${F710_SRC}
+        ${F710_THREADED}
         ${RBL_SRC}
         ${BRIDGE_LIB_SRC}
         ${NON_ROS_MSGS_SRC}
 )
 set(APP_INCLUDE_DIRS
         ${PROJECT_SOURCE_DIR}
+        ${PROJECT_SOURCE_DIR}/bridge_lib
         ${PROJECT_SOURCE_DIR}/f710/src
         ${PROJECT_SOURCE_DIR}/vendor/include
 )
@@ -100,7 +117,7 @@ target_include_directories(${APP_LIB} PUBLIC ${APP_INCLUDE_DIRS})
 
 add_subdirectory(f710_demo)
 add_subdirectory(f710_control_v1)
-add_subdirectory(f710_control_v2)
-add_subdirectory(serial_test_app)
-add_subdirectory(serial_monitor)
-add_subdirectory(tests)
+# add_subdirectory(f710_control_v2)
+# add_subdirectory(serial_test_app)
+# add_subdirectory(serial_monitor)
+# add_subdirectory(tests)
