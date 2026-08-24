@@ -38,6 +38,7 @@ namespace non_ros_msgs {
         using UPtr = std::unique_ptr<EncoderStatus>;
         int64_t sample_sum;
         int64_t sample_timestamp_usecs;
+        float   wheel_speed_mps;
         float   motor_rpm_estimate;
         bool    direction_pin_state;
     };

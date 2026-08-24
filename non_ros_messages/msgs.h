@@ -62,12 +62,22 @@ bool deserialize(IoBuffer& buffer, EncoderStatus& cmd_response);
 bool deserialize(IoBuffer& buffer, TwoEncoderStatus& cmd_response);
 bool deserialize(IoBuffer& buffer, TextMsg& cmd_response);
 
+bool deserialize(std::string& buffer, FirmwareStartupResponse& response);
+bool deserialize(std::string& buffer, CmdResponse& response);
+bool deserialize(std::string& buffer, EncoderStatus& cmd_response);
+bool deserialize(std::string& buffer, TwoEncoderStatus& cmd_response);
+bool deserialize(std::string& buffer, TextMsg& cmd_response);
+
 /**
  * Use this general deserialize function 
 */
 bool deserialize(IoBuffer& buffer, InputMessageVariant& inmsg);
 bool deserialize(IoBuffer& buffer, InputMessageUPtrVariant& inmsg);
 std::unique_ptr<InputMessageUPtrVariant> deserialize(IoBuffer& buffer);
+
+bool deserialize(std::string& buffer, InputMessageVariant& inmsg);
+bool deserialize(std::string& buffer, InputMessageUPtrVariant& inmsg);
+std::unique_ptr<InputMessageUPtrVariant> deserialize(std::string& buffer);
 /**
  *  * Similarly serialize functions are only required for those messages sent from the Host to the 
  * Micro-controller. They are:

@@ -42,6 +42,12 @@ bool deserialize(IoBuffer& buffer, FirmwareStartupResponse& cmd_response)
     cmd_response.text = std::string(buffer.c_str());
     return true;
 }
+bool deserialize(std::string& buffer, FirmwareStartupResponse& cmd_response)
+{
+    IoBuffer iob{buffer};
+    return deserialize(iob, cmd_response);
+}
+
 bool deserialize(IoBuffer& buffer, FirmwareRebootCmd& cmd)
 {
     if(test_buffer_prefix(buffer, "reset") || test_buffer_prefix(buffer, "b")) {
@@ -68,10 +74,8 @@ bool deserialize(IoBuffer& buffer, EncoderStatus& status)
     }try {
         std::string json_string = buffer.to_string().substr(2, std::string::npos);
         jsoncons::json j = jsoncons::json::parse(json_string);
-        status.sample_sum = j["ss"].as<int64_t>();
-//        status.sample_timestamp_usecs = j["ts"].as<int64_t>();
         status.motor_rpm_estimate = j["mr"].as<float>();
-//        status.direction_pin_state = j["ps"].as<int8_t>();
+        status.wheel_speed_mps = j["wsms"].as<float>();
         return true;
     } catch(std::exception& e) {
         return false;
@@ -86,15 +90,11 @@ bool deserialize(IoBuffer& buffer, TwoEncoderStatus& status)
 //    printf("deserialize TwoEncoderStatus %s\n", buffer.to_string().c_str());
     std::string json_string = buffer.to_string().substr(2,std::string::npos);
     jsoncons::json j = jsoncons::json::parse(json_string);
-    status.left.sample_sum = j[0]["ss"].as<int64_t>();
-//    status.left.sample_timestamp_usecs = j[0]["ts"].as<int64_t>();
     status.left.motor_rpm_estimate = j[0]["mr"].as<float>();
-//    status.left.direction_pin_state = j[0]["ps"].as<int8_t>();
+    status.left.wheel_speed_mps = j[0]["wsms"].as<float>();
 
-    status.right.sample_sum = j[1]["ss"].as<int64_t>();
-//    status.right.sample_timestamp_usecs = j[1]["ts"].as<int64_t>();
     status.right.motor_rpm_estimate = j[1]["mr"].as<float>();
-//    status.right.direction_pin_state = j[1]["ps"].as<int8_t>();
+    status.right.wheel_speed_mps = j[1]["wsms"].as<float>();
     return true;
 }
 

@@ -1,5 +1,7 @@
 #include <rbl/cv_queue.h>
 #include <cstdio>
+#define _GNU_SOURCE
+#include <unistd.h>
 #include <thread>
 #include <string>
 #include <rbl/std_format.h>

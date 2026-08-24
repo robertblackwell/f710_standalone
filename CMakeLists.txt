@@ -56,6 +56,8 @@ set(BRIDGE_LIB_SRC
         ${BRIDGE_LIB_DIR}/fd_functions.cpp
         ${BRIDGE_LIB_DIR}/serial_link.h
         ${BRIDGE_LIB_DIR}/serial_link.cpp
+        ${BRIDGE_LIB_DIR}/asio_serial_bridge.h
+        ${BRIDGE_LIB_DIR}/asio_serial_bridge.cpp
         ${BRIDGE_LIB_DIR}/serial_settings.h
         ${BRIDGE_LIB_DIR}/serial_settings.cpp
 )

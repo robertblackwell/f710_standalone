@@ -7,6 +7,7 @@
 #include <cstdio>
 #include <cerrno>
 #include <cstring>
+#include <unistd.h>
 #include <condition_variable>
 #include "std_format.h"
 #include <functional>
