@@ -1,5 +1,3 @@
-
-// \author: Blaise Gassend
 #include "f710.h"
 #include <memory>
 #include <cstring>
