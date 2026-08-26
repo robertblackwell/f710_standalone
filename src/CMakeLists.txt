@@ -1,35 +1,17 @@
-add_executable(f710_controller
-        main.cpp
-        outputter.cpp
-        outputter.h
-        ${F710_DIR}/src/f710_time.h
-        ${F710_DIR}/src/f710.h
-        ${F710_DIR}/src/f710.cpp
-        ${F710_DIR}/src/f710_helpers.cpp
-        ${F710_DIR}/src/f710_helpers.h
+# 1. Define the library without source files initially
+add_library(applib STATIC "")
+add_library(F710Project::f710lib ALIAS applib)
 
-        ${F710_DIR}/rbl/logger.cpp
-        ${F710_DIR}/rbl/logger.h
-        ${F710_DIR}/rbl/iobuffer.h
-        ${F710_DIR}/rbl/iobuffer.cpp
-        ${F710_DIR}/rbl/queue.h
-
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.h
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/fd_functions.cpp
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_link.h
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_link.cpp
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_settings.h
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/serial_settings.cpp
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/std_format.cpp
-        ${SERIAL_BRIDGE_DIR}/bridge_lib/std_format.h
-
+# 2. Configure public include directories for the target
+target_include_directories(applib 
+    PUBLIC 
+        $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}>
+    SYSTEM PUBLIC
+        "${CMAKE_CURRENT_SOURCE_DIR}/../vendor/include"
 )
-target_include_directories(f710_controller
-        PUBLIC
-        ${PROJECT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/src
-        ${PROJECT_SOURCE_DIR}/f710
-        ${PROJECT_SOURCE_DIR}/f710/src
-        ${PROJECT_SOURCE_DIR}/serial-bridge
-        ../bridge_lib
-)
+
+# 3. Add the subdirectories containing the actual source code
+add_subdirectory(bridge_lib)
+add_subdirectory(f710-v1)
+add_subdirectory(non_ros_messages)
+add_subdirectory(rbl)

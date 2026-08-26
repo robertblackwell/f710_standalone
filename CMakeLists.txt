@@ -1,10 +1,12 @@
-cmake_minimum_required(VERSION 3.8)
-project(f710 LANGUAGES CXX C  VERSION 0.0.1)
+cmake_minimum_required(VERSION 3.16)
+project(F710Project LANGUAGES CXX C  VERSION 0.0.1)
 
 if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
     add_compile_options(-Wall -Wextra -Wpedantic -std=gnu++20)
 endif()
+
 set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 # set(CMAKE_VERBOSE_MAKEFILE ON)
 
@@ -13,14 +15,6 @@ message(" c compiler ${CMAKE_C_COMPILER}")
 set(CMAKE_CXX_ABI_COMPILED  Off)
 set(CMAKE_C_ABI_COMPILED  Off)
 find_package(PkgConfig REQUIRED)
-pkg_check_modules(GTK4 REQUIRED gtk4)
-set(CMAKE_BUILD_TYPE Debug)
-message("gtk4_include_dirs  ${GTK4_INCLUDE_DIRS}")
-message("gtk4_library_dirs  ${GTK4_LIBRARY_DIRS}")
-message("gtk4_cflags        ${GTK4_CFLAGS_OTHER}")
-
-# set(CMAKE_C_COMPILER clang)
-# set(CMAKE_CXX_COMPILER clang)
 
 set(CMAKE_BUILD_TYPE Debug)
 set(F710_DIR ${PROJECT_SOURCE_DIR}/f710-v1)
@@ -31,93 +25,46 @@ set(TWIST_DRIVE_DIR ${PROJECT_SOURCE_DIR}/twist_drive)
 set(NON_ROS_MSGS_DIR ${PROJECT_SOURCE_DIR}/non_ros_messages)
 set(JSONCONS_INCLUDE_DIR vendor/include)
 
-set(F710_THREADED
-        ${F710_DIR}/src/f710.cpp
-        ${F710_DIR}/src/f710.h
-        ${F710_DIR}/src/f710_exceptions.h
-        ${F710_DIR}/src/f710_helpers.cpp
-        ${F710_DIR}/src/f710_helpers.h
-#        ${F710_DIR}/src/f710_original.cpp
-        ${F710_DIR}/src/f710_time.h
-)
-set(F710_ASIO
-        ${F710_DIR}/src/f710.cpp
-        ${F710_DIR}/src/f710.h
-        ${F710_DIR}/src/f710_exceptions.h
-        ${F710_DIR}/src/f710_helpers.cpp
-        ${F710_DIR}/src/f710_helpers.h
-#        ${F710_DIR}/src/f710_original.cpp
-        ${F710_DIR}/src/f710_time.h
-)
+# ============================================================================
+# LOCAL BOOST DEPENDENCY INTEGRATION (ASIO & FIBER)
+# ============================================================================
 
-set(RBL_SRC
-        ${RBL_DIR}/logger.cpp
-        ${RBL_DIR}/logger.h
-        ${RBL_DIR}/iobuffer.h
-        ${RBL_DIR}/iobuffer.cpp
-        ${RBL_DIR}/queue.h
-        ${RBL_DIR}/std_format.cpp
-        ${RBL_DIR}/std_format.h
-        ${RBL_DIR}/std_format.cpp
-        ${RBL_DIR}/std_format.h
-)
-set(BRIDGE_LIB_SRC
-        ${BRIDGE_LIB_DIR}/fd_functions.h
-        ${BRIDGE_LIB_DIR}/fd_functions.cpp
-        ${BRIDGE_LIB_DIR}/serial_settings.h
-        ${BRIDGE_LIB_DIR}/serial_settings.cpp
+# Enable Boost's internal Native CMake configuration architecture
+set(BOOST_ENABLE_CMAKE ON CACHE INTERNAL "")
 
-        ${BRIDGE_LIB_DIR}/threaded/serial_link.h
-        ${BRIDGE_LIB_DIR}/threaded/serial_link.cpp
-        ${BRIDGE_LIB_DIR}/threaded/outputter.h
-        ${BRIDGE_LIB_DIR}/threaded/outputter.cpp
+# Restrict the submodule to build/expose ONLY Asio, Context, and Fiber
+set(BOOST_INCLUDE_LIBRARIES "asio" "context" "fiber" CACHE INTERNAL "")
 
-        ${BRIDGE_LIB_DIR}/asio/serial_bridge.h
-        ${BRIDGE_LIB_DIR}/asio/serial_bridge.cpp
-        ${BRIDGE_LIB_DIR}/asio/outputter.h
-        ${BRIDGE_LIB_DIR}/asio/outputter.cpp
-)
-set(MOTION_CONTROL_SRC
-        ${MOTION_CONTROL_DIR}/helpers.h
-        ${MOTION_CONTROL_DIR}/helpers.cpp
-        ${MOTION_CONTROL_DIR}/motion_control.h
-        ${MOTION_CONTROL_DIR}/motion_control.cpp
-)
-set(NON_ROS_MSGS_SRC
-        ${NON_ROS_MSGS_DIR}/msg_struct.h
-        ${NON_ROS_MSGS_DIR}/msgs.h
-        ${NON_ROS_MSGS_DIR}/msgs.cpp
-)
-set(LIB_SRC
-        ${F710_THREADED}
-        ${RBL_SRC}
-        ${BRIDGE_LIB_SRC}
-        ${NON_ROS_MSGS_SRC}
-)
-set(APP_INCLUDE_DIRS
-        ${PROJECT_SOURCE_DIR}
-        ${PROJECT_SOURCE_DIR}/bridge_lib
-        ${PROJECT_SOURCE_DIR}/f710/src
-        ${PROJECT_SOURCE_DIR}/vendor/include
-)
+# Force Boost's own internal unit testing framework to shut off
+set(BUILD_TESTING_SAVED ${BUILD_TESTING}) # Save your setting
+set(BUILD_TESTING OFF CACHE INTERNAL "")
 
+# Parse the local submodule source directory tree
+if(EXISTS "${PROJECT_SOURCE_DIR}/external/boost/CMakeLists.txt")
+    add_subdirectory(external/boost)
+else()
+    message(FATAL_ERROR "Boost submodule not found! Please run your setup_boost.sh script first.")
+endif()
 
-MESSAGE("PROJECT_SOURCE_DIR   ${PROJECT_SOURCE_DIR}")
+# Restore your project's testing configuration state
+set(BUILD_TESTING ${BUILD_TESTING_SAVED} CACHE BOOL "" FORCE)
 
-MESSAGE("LIB_SRC   ${LIB_SRC}")
-MESSAGE("APP_INCLUDE_DIRS   ${PROJECT_SOURCE_DIR}")
+# ============================================================================
+# PROJECT SUBDIRECTORIES & TESTING CONFIGURATIONS
+# ============================================================================
 
-set(SERIAL_BRIDGE_DIR ${PROJECT_SOURCE_DIR}/serial-bridge)
+# 1. Enable CTest testing
+include(CTest)
+enable_testing()
 
-set(APP_LIB applib)
+# 2. Build the library first
+add_subdirectory(src)
 
-add_library(${APP_LIB} STATIC ${LIB_SRC})
-target_include_directories(${APP_LIB} PUBLIC ${APP_INCLUDE_DIRS})
+# 3. Build the apps
+add_subdirectory(test_apps)
 
+# Build unit tests 
+if(BUILD_TESTIING)
+    add_subdirectory(tests)
+endif()
 
-add_subdirectory(f710_v1_threaded_demo)
-add_subdirectory(f710_v1_control_app)
-# add_subdirectory(f710_control_v2)
-# add_subdirectory(serial_test_app)
-# add_subdirectory(serial_monitor)
-# add_subdirectory(tests)
