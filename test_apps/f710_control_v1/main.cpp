@@ -1,9 +1,7 @@
 #define GNU_SOURCE
-#include <stdio.h>
+#include <cstdio>
 #include <thread>
-#include <print>
 #include <climits>
-#include <format>
 #include <f710-v1/f710.h>
 #include <rbl/std_format.h>
 #include <rbl/iobuffer.h>
@@ -161,7 +159,7 @@ static void handle_incoming_msg(Outputter& outputter, IoBuffer::UPtr iob_uptr)
     std::visit(msg_overload{
         [&](non_ros_msgs::FirmwareStartupResponse::UPtr& msg){default_action();},
         [&](non_ros_msgs::TwoEncoderStatus::UPtr& msg){
-            auto fmtmsg = std::format("wheel speed m/s left: {} right: {} precent diff:  {}\n", 
+            auto fmtmsg = std_format("wheel speed m/s left: {} right: {} precent diff:  {}\n",
                 msg->left.wheel_speed_mps, msg->right.wheel_speed_mps, 
                 100.0*((msg->left.wheel_speed_mps - msg->right.wheel_speed_mps)/(msg->left.wheel_speed_mps)));
             outputter.send_threadsafe(fmtmsg);

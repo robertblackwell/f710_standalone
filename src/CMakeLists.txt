@@ -10,8 +10,26 @@ target_include_directories(applib
         "${CMAKE_CURRENT_SOURCE_DIR}/../vendor/include"
 )
 
+target_link_libraries(applib
+    PUBLIC
+        Boost::asio
+        Boost::fiber
+        Boost::context
+        Boost::headers
+)
+
+target_compile_options(applib
+    PRIVATE
+        -Wall
+        -Wextra
+        -Wpedantic
+)
+
 # 3. Add the subdirectories containing the actual source code
-add_subdirectory(bridge_lib)
-add_subdirectory(f710-v1)
-add_subdirectory(non_ros_messages)
+# add_subdirectory(bridge_lib)
+# add_subdirectory(f710-v1)
+# add_subdirectory(f710-v2)
+add_subdirectory(pico_messages)
 add_subdirectory(rbl)
+add_subdirectory(app_asio)
+add_subdirectory(app_threaded)

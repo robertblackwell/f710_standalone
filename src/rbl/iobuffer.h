@@ -45,16 +45,16 @@ class IoBuffer
 {
 protected:
     union {
-        void *m_memPtr;      /// points to the start of the memory slab managed by the instance
+        void *m_memPtr;         /// points to the start of the memory slab managed by the instance
         char *m_cPtr_xx;        /// same as memPtr but makes it easier in debugger to see whats in the buffer
     };
-    char *m_cPtr;        /// same as memPtr but makes it easier in debugger to see whats in the buffer
+    char *m_cPtr;              /// same as memPtr but makes it easier in debugger to see whats in the buffer
     std::size_t m_start_offset;/// offset from m_memPtr of the first byte of the active data in the buffer
                                /// because of the consume() function this may not always be the
                                /// the same as m_memPtr
     std::size_t m_length;      ///
     std::size_t m_capacity;    /// the capacity of the buffer, the value used for the malloc call
-//    std::size_t m_size;        /// size of the currently filled portion of the memory slab
+//    std::size_t m_size;      /// size of the currently filled portion of the memory slab
     void init(std::size_t cap);
     /**
     * returns a pointer to the next available unused position in the buffer

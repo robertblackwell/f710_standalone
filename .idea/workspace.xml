@@ -20,17 +20,19 @@
     <generated>
       <config projectName="F710Project" targetName="boost_context" />
       <config projectName="F710Project" targetName="boost_assert" folderName="Dependencies" />
-      <config projectName="F710Project" targetName="boost_container" folderName="Dependencies" />
       <config projectName="F710Project" targetName="boost_date_time" folderName="Dependencies" />
       <config projectName="F710Project" targetName="boost_fiber_numa" />
-      <config projectName="F710Project" targetName="boost_atomic" folderName="Dependencies" />
       <config projectName="F710Project" targetName="f710_controller_v1" />
-      <config projectName="F710Project" targetName="boost_optional" folderName="Dependencies" />
-      <config projectName="F710Project" targetName="f710_v1_threaded_demo" />
+      <config projectName="F710Project" targetName="f710_asio_controller" />
+      <config projectName="F710Project" targetName="f710_asio_demo" />
       <config projectName="F710Project" targetName="applib" />
       <config projectName="F710Project" targetName="boost_unordered" folderName="Dependencies" />
       <config projectName="F710Project" targetName="boost_fiber" />
       <config projectName="F710Project" targetName="boost_filesystem" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="boost_container" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="boost_atomic" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="f710_threaded_demo" />
+      <config projectName="F710Project" targetName="boost_optional" folderName="Dependencies" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -40,150 +42,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/external/boost" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitmodules" beforeDir="false" afterPath="$PROJECT_DIR$/.gitmodules" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/f710-standalone.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/f710-standalone.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/rp4_get_sysroot.sh" beforeDir="false" afterPath="$PROJECT_DIR$/bin/rp4_get_sysroot.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/asio/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/asio/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/asio/serial_bridge.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/asio/serial_bridge.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/fd_functions.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/fd_functions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_settings.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/serial_settings.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/threaded/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/threaded/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/threaded/serial_link.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bridge_lib/threaded/serial_link.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/notes.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710_exceptions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710_helpers.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710_helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710_original.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/f710_time.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v1/src/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/asio_reader.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/asio_reader.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/f710_exceptions.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/f710_helpers.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/f710_helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/f710_original.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/f710_time.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/main_asio.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/model.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/model.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/model_defines.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/reader.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/reader.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710-v2/timeout_context.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_asio/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_asio/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_asio/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_asio/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v1/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v1/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v2/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v2/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v2/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_control_v2/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_v1_threaded_demo/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_v1_threaded_demo/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_v1_threaded_demo/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/f710_v1_threaded_demo/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/helpers.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/motion_control.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/motion_control/motion_control.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non_ros_messages/msg_struct.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non_ros_messages/msgs.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/non_ros_messages/msgs.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/cv_queue.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/cv_queue.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/iobuffer.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/iobuffer.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/logger.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/logger.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/queue.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/simple_exit_guard.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/std_format.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/rbl/std_format.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/bridge.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/bridge_speed_test.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/bridge_test_cmds.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/package.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/publisher_test_cmds.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/readme.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/something.todo" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ros-bridge-node/taskfile.sh" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.vscode/c_cpp_properties.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.vscode/launch.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.vscode/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/.vscode/tasks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/custom.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/custom.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/custom.h.saved" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/motor_profile.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/motor_profile.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/fbcontrol/value_with_direction.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/launch/publisher_cmds_launch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/launch/test_cmds_launch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/common/unittest.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/common/unittest.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_buffers/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_buffers/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_buffers/test_buffer_main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_first_guess/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_first_guess/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_first_guess/test_first_guess.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_msgs/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_msgs/test_msgs.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_queue/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_queue/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_queue/test_queue_main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_with_pico/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_with_pico/a.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_with_pico/json.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial-bridge/tests_non_ros/test_with_pico/test_with_pico.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_monitor/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_monitor/app_context.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_monitor/background_thread.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_monitor/background_thread.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_monitor/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial_test_app/outputter.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cv_queue.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/cv_queue.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_controller_v1/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_controller_v1/main.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_controller_v1/outputter.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_controller_v1/outputter.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/helpers.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/interpret_f710_helpers.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/interpret_f710_helpers.h" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/twist_drive.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/twist_drive/twist_drive.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/serial_settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge_lib/serial_settings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-v1/f710_helpers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msg_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/iobuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/rbl/iobuffer.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test_apps/f710_control_v1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_apps/f710_control_v1/main.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -194,7 +65,7 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="19427" />
+    <option name="cachedIndexableFilesCount" value="20275" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
@@ -210,61 +81,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0000000008164027" />
-      <entry key="MS500" value="1.0152188166959881" />
-      <entry key="S2" value="1.3512329258992246" />
-      <entry key="S5" value="1.6580184769222641" />
-      <entry key="S10" value="1.8111833805757267" />
-      <entry key="S30" value="1.9326234862763456" />
-      <entry key="S60" value="1.9657243324450024" />
-      <entry key="M2" value="1.9827127415705461" />
-      <entry key="M5" value="1.9930601107069403" />
-      <entry key="M10" value="2.0066892215010825" />
-      <entry key="M15" value="2.1404954633674995" />
-      <entry key="M30" value="4.759379442656906" />
-      <entry key="H1" value="17.31853830048248" />
-      <entry key="H2" value="44.813770537212655" />
-      <entry key="H4" value="78.74447844278873" />
-      <entry key="D1" value="131.93334912192185" />
-      <entry key="W1" value="144.73245260608303" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0001184035641477" />
+      <entry key="S2" value="1.1138324302427365" />
+      <entry key="S5" value="2.0295927900958453" />
+      <entry key="S10" value="4.421126860530812" />
+      <entry key="S30" value="11.598260901287004" />
+      <entry key="S60" value="17.040044727235784" />
+      <entry key="M2" value="24.396939424056544" />
+      <entry key="M5" value="44.68311682330247" />
+      <entry key="M10" value="64.89465963602538" />
+      <entry key="M15" value="75.3083968238712" />
+      <entry key="M30" value="88.88313131781646" />
+      <entry key="H1" value="101.50596791664827" />
+      <entry key="H2" value="125.10087547309502" />
+      <entry key="H4" value="161.16639913078052" />
+      <entry key="D1" value="230.84217563193988" />
+      <entry key="W1" value="249.60366327478158" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="1.0103319876275636E-268" />
-      <entry key="S30" value="4.657519705880122E-90" />
-      <entry key="S60" value="2.1581287509970572E-45" />
-      <entry key="M2" value="4.645566435858018E-23" />
-      <entry key="M5" value="1.166313949979608E-9" />
-      <entry key="M10" value="3.415176938039879E-5" />
-      <entry key="M15" value="0.0010533387894677807" />
-      <entry key="M30" value="0.033642687710869944" />
-      <entry key="H1" value="0.22908317646244036" />
-      <entry key="H2" value="0.7373322940252105" />
-      <entry key="H4" value="1.4425717619875427" />
-      <entry key="D1" value="2.644621677620952" />
-      <entry key="W1" value="2.946167567224342" />
+      <entry key="S2" value="2.723399143134931E-116" />
+      <entry key="S5" value="7.80727384195395E-47" />
+      <entry key="S10" value="1.2105970869360254E-23" />
+      <entry key="S30" value="3.617736555998032E-8" />
+      <entry key="S60" value="2.687333109616128E-4" />
+      <entry key="M2" value="0.023177820067094408" />
+      <entry key="M5" value="0.3362190081192742" />
+      <entry key="M10" value="0.8200154044731256" />
+      <entry key="M15" value="1.103807388813082" />
+      <entry key="M30" value="1.488603495514955" />
+      <entry key="H1" value="1.789985677152969" />
+      <entry key="H2" value="2.2530168999630003" />
+      <entry key="H4" value="2.9845603041685616" />
+      <entry key="D1" value="4.498888701850084" />
+      <entry key="W1" value="4.922697408253815" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.0023226708572095167" />
-      <entry key="MS500" value="0.31210443610379385" />
-      <entry key="S2" value="1.0872198558306623" />
-      <entry key="S5" value="1.541964108256333" />
-      <entry key="S10" value="1.7512118502454013" />
-      <entry key="S30" value="1.9121788186320905" />
-      <entry key="S60" value="1.9554437502648174" />
-      <entry key="M2" value="1.9775577734772858" />
-      <entry key="M5" value="1.9909945426652529" />
-      <entry key="M10" value="2.0056754212564702" />
-      <entry key="M15" value="2.140763325284333" />
-      <entry key="M30" value="4.7920357004157905" />
-      <entry key="H1" value="17.545710095519286" />
-      <entry key="H2" value="45.54831337823561" />
-      <entry key="H4" value="80.18438424414215" />
-      <entry key="D1" value="134.577168976931" />
-      <entry key="W1" value="147.67849291594848" />
+      <entry key="MS100" value="0.035158077646525294" />
+      <entry key="MS500" value="0.5119667284240144" />
+      <entry key="S2" value="0.9364512505617517" />
+      <entry key="S5" value="1.9247135471204855" />
+      <entry key="S10" value="4.348601703244036" />
+      <entry key="S30" value="11.526241175111073" />
+      <entry key="S60" value="16.945150824193945" />
+      <entry key="M2" value="24.30983721007729" />
+      <entry key="M5" value="44.928573186906554" />
+      <entry key="M10" value="65.65261694541707" />
+      <entry key="M15" value="76.36572098830652" />
+      <entry key="M30" value="90.34534969270968" />
+      <entry key="H1" value="103.2813551007661" />
+      <entry key="H2" value="127.3451231451296" />
+      <entry key="H4" value="164.14530439584576" />
+      <entry key="D1" value="235.33967665226723" />
+      <entry key="W1" value="254.52614465265253" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -282,41 +153,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;CMake Application.f710_controller_v1.executor&quot;: &quot;Run&quot;,
-    &quot;CMake Application.f710_controller_v2.executor&quot;: &quot;Debug&quot;,
-    &quot;CMake Application.serial_monitor.executor&quot;: &quot;Run&quot;,
-    &quot;CidrDebugProfileConversion&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.west.config.association.type.startup.service&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;SHELLCHECK.PATH&quot;: &quot;I do mind&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;standalone-debian&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/robert/Projects/f710-standalone&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.jshint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.jshint&quot;: &quot;&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.folding&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake Application.f710_controller_v1.executor": "Run",
+    "CMake Application.f710_controller_v2.executor": "Debug",
+    "CMake Application.serial_monitor.executor": "Run",
+    "CidrDebugProfileConversion": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SHELLCHECK.PATH": "I do mind",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "standalone-debian",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/home/robert/Projects/f710-standalone",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.jshint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.jshint": "",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests" />
@@ -610,6 +481,11 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="applib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="applib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -670,7 +546,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="f710_controller_v1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_controller_v1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_controller_v1">
+    <configuration name="f710_asio_controller" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_asio_controller" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_asio_controller">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="f710_asio_demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_asio_demo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_asio_demo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -680,7 +561,12 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="f710_v1_threaded_demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_v1_threaded_demo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_v1_threaded_demo">
+    <configuration name="f710_controller_v1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_controller_v1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_controller_v1">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="f710_threaded_demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_threaded_demo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_threaded_demo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -730,8 +616,10 @@
       <item itemvalue="CMake Application.boost_fiber" />
       <item itemvalue="CMake Application.boost_fiber_numa" />
       <item itemvalue="CMake Application.applib" />
+      <item itemvalue="CMake Application.f710_asio_controller" />
+      <item itemvalue="CMake Application.f710_asio_demo" />
       <item itemvalue="CMake Application.f710_controller_v1" />
-      <item itemvalue="CMake Application.f710_v1_threaded_demo" />
+      <item itemvalue="CMake Application.f710_threaded_demo" />
     </list>
   </component>
   <component name="SelectedDebugProfileService">{

@@ -18,9 +18,9 @@
 
 namespace f710 {
 
-/*! \brief Returns the device path of the first joystick that matches joy_name.
- *  If no match is found, an empty string is returned.
- */
+    /*! \brief Returns the device path of the first joystick that matches joy_name.
+    *  If no match is found, an empty string is returned.
+    */
     std::optional<std::string> get_dev_by_joy_name() {
         const char path[] = "/dev/input";  // no trailing / here
         struct dirent *entry;

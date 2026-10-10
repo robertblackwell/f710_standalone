@@ -1,5 +1,9 @@
 # Cross compile 
 
+Note: look in the repo's `bin` directory for scripts to built the rpi4 sysroot
+
+# References
+
 https://tttapa.github.io/Pages/Raspberry-Pi/C++-Development-Ubuntu/index.html
 
 [https://stackoverflow.com/questions/278112/webcam-library-for-c-on-linux](https://stackoverflow.com/questions/278112/webcam-library-for-c-on-linux)
@@ -34,3 +38,4 @@ Cross compiling for rpi4
 [https://fodor.org/2021/08/02/cpp-gtk4-gui.html](https://fodor.org/2021/08/02/cpp-gtk4-gui.html)
 
 [https://www.gtk.org/docs/installations/linux/](https://www.gtk.org/docs/installations/linux/)
+

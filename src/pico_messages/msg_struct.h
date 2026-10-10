@@ -1,7 +1,8 @@
+#ifndef H_PICO_MESSAGES_H
+#define H_PICO_MESSAGES_H
+#include <memory>
 #include <string>
 #include <vector>
-#ifndef F710_CMD_RESPONSE_H
-#define F710_CMD_RESPONSE_H
 namespace non_ros_msgs {
     struct F710LeftRight {
         using UPtr = std::unique_ptr<F710LeftRight>;
@@ -67,4 +68,4 @@ namespace non_ros_msgs {
         EncoderStatus right;
     };
 }
-#endif //F710_CMD_RESPONSE_H
+#endif //PICO_MESSAGE

@@ -1,10 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(F710Project LANGUAGES CXX C  VERSION 0.0.1)
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-    add_compile_options(-Wall -Wextra -Wpedantic -std=gnu++20)
-endif()
-
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -12,8 +8,6 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 message(" c compiler ${CMAKE_C_COMPILER}")
 
-set(CMAKE_CXX_ABI_COMPILED  Off)
-set(CMAKE_C_ABI_COMPILED  Off)
 find_package(PkgConfig REQUIRED)
 
 set(CMAKE_BUILD_TYPE Debug)
@@ -57,11 +51,11 @@ set(BUILD_TESTING ${BUILD_TESTING_SAVED} CACHE BOOL "" FORCE)
 include(CTest)
 enable_testing()
 
-# 2. Build the library first
 add_subdirectory(src)
 
+
 # 3. Build the apps
-add_subdirectory(test_apps)
+# add_subdirectory(test_apps)
 
 # Build unit tests 
 if(BUILD_TESTIING)
