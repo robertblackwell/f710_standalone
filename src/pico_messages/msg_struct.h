@@ -3,7 +3,17 @@
 #include <memory>
 #include <string>
 #include <vector>
-namespace non_ros_msgs {
+namespace pico_messages {
+    enum class InputMessageVariantEnum {firmware_startup=0, text_msg=1, cmd_response=2, encoder_status=3, two_encoder_status=4};
+    enum class OutputMessageVariantEnum {
+            firmware_reboot,
+            test_msg,
+            echo_cmd,
+            load_test_cmd,
+            motor_pwm_cmd,
+            motor_rpm_cmd,
+            read_encoders_cmd};
+
     struct F710LeftRight {
         using UPtr = std::unique_ptr<F710LeftRight>;
         int m_left;
@@ -67,5 +77,28 @@ namespace non_ros_msgs {
         EncoderStatus left;
         EncoderStatus right;
     };
+    struct InputMessageUnion {
+        using UPtr = std::unique_ptr<InputMessageUnion>;
+        InputMessageVariantEnum tag;
+        union {
+            FirmwareStartupResponse firmware_startup_response;
+            TextMsg             text_msg;
+            CmdResponse         cmd_response;
+            EncoderStatus       encoder_status;
+            TwoEncoderStatus    two_encoder_status;
+        };
+    };
+    struct OutputMessageUnion {
+        using UPtr = std::unique_ptr<OutputMessageUnion>;
+        OutputMessageVariantEnum tag;
+        union {
+            FirmwareRebootCmd reboot_cmd;
+            LoadTestCmd       load_test_cmd;
+            MotorPwmCmd       pwm_cmd;
+            MotorRpmCmd       rpm_cmd;
+            EchoCmd           echo_cmd;
+            ReadEncodersCmd   read_encoders_cmd;
+        };
+    };
 }
-#endif //PICO_MESSAGE
+#endif //H_PICO_MESSAGES_H

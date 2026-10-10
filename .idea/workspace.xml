@@ -41,20 +41,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="">
+    <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="Major refactor underway">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/bridge_lib/serial_settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/bridge_lib/serial_settings.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-v1/f710_helpers.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msg_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/non_ros_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/rbl/iobuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/rbl/iobuffer.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_apps/f710_control_v1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/test_apps/f710_control_v1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/common/unittest.c" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/common/unittest.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/common/unittest.h" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/common/unittest.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/test_buffer_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/test_buffer_main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/test_first_guess.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/test_first_guess.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_msgs/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_msgs/test_msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/test_queue_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/test_queue_main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/a.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/json.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/test_with_pico.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/test_with_pico.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,61 +90,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0001184035641477" />
-      <entry key="S2" value="1.1138324302427365" />
-      <entry key="S5" value="2.0295927900958453" />
-      <entry key="S10" value="4.421126860530812" />
-      <entry key="S30" value="11.598260901287004" />
-      <entry key="S60" value="17.040044727235784" />
-      <entry key="M2" value="24.396939424056544" />
-      <entry key="M5" value="44.68311682330247" />
-      <entry key="M10" value="64.89465963602538" />
-      <entry key="M15" value="75.3083968238712" />
-      <entry key="M30" value="88.88313131781646" />
-      <entry key="H1" value="101.50596791664827" />
-      <entry key="H2" value="125.10087547309502" />
-      <entry key="H4" value="161.16639913078052" />
-      <entry key="D1" value="230.84217563193988" />
-      <entry key="W1" value="249.60366327478158" />
+      <entry key="MS100" value="1.5251109446314882E-191" />
+      <entry key="MS500" value="8.334063311033338E-39" />
+      <entry key="S2" value="4.846167121547248E-10" />
+      <entry key="S5" value="3.007615791621881E-4" />
+      <entry key="S10" value="0.02971544475926063" />
+      <entry key="S30" value="1.0495346466023308" />
+      <entry key="S60" value="3.657108250935281" />
+      <entry key="M2" value="8.299976508758135" />
+      <entry key="M5" value="18.94151853033888" />
+      <entry key="M10" value="31.440299858140754" />
+      <entry key="M15" value="43.087669054605605" />
+      <entry key="M30" value="80.01112705675114" />
+      <entry key="H1" value="136.06264295149427" />
+      <entry key="H2" value="199.68935171802963" />
+      <entry key="H4" value="265.64659198327445" />
+      <entry key="D1" value="377.7981139445533" />
+      <entry key="W1" value="407.5956854811623" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="2.723399143134931E-116" />
-      <entry key="S5" value="7.80727384195395E-47" />
-      <entry key="S10" value="1.2105970869360254E-23" />
-      <entry key="S30" value="3.617736555998032E-8" />
-      <entry key="S60" value="2.687333109616128E-4" />
-      <entry key="M2" value="0.023177820067094408" />
-      <entry key="M5" value="0.3362190081192742" />
-      <entry key="M10" value="0.8200154044731256" />
-      <entry key="M15" value="1.103807388813082" />
-      <entry key="M30" value="1.488603495514955" />
-      <entry key="H1" value="1.789985677152969" />
-      <entry key="H2" value="2.2530168999630003" />
-      <entry key="H4" value="2.9845603041685616" />
-      <entry key="D1" value="4.498888701850084" />
-      <entry key="W1" value="4.922697408253815" />
+      <entry key="MS100" value="1.0000000000000082" />
+      <entry key="MS500" value="1.0015222495920175" />
+      <entry key="S2" value="1.2264765084318683" />
+      <entry key="S5" value="1.8542737869728683" />
+      <entry key="S10" value="2.528776139308432" />
+      <entry key="S30" value="3.566161669899253" />
+      <entry key="S60" value="4.123027334431201" />
+      <entry key="M2" value="4.742414409459865" />
+      <entry key="M5" value="6.854742365642441" />
+      <entry key="M10" value="9.598631191240033" />
+      <entry key="M15" value="11.497135653388938" />
+      <entry key="M30" value="15.104518077641814" />
+      <entry key="H1" value="18.624208653695323" />
+      <entry key="H2" value="21.51391037235278" />
+      <entry key="H4" value="23.797363464812996" />
+      <entry key="D1" value="27.044517910492416" />
+      <entry key="W1" value="27.85435870126472" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="0.035158077646525294" />
-      <entry key="MS500" value="0.5119667284240144" />
-      <entry key="S2" value="0.9364512505617517" />
-      <entry key="S5" value="1.9247135471204855" />
-      <entry key="S10" value="4.348601703244036" />
-      <entry key="S30" value="11.526241175111073" />
-      <entry key="S60" value="16.945150824193945" />
-      <entry key="M2" value="24.30983721007729" />
-      <entry key="M5" value="44.928573186906554" />
-      <entry key="M10" value="65.65261694541707" />
-      <entry key="M15" value="76.36572098830652" />
-      <entry key="M30" value="90.34534969270968" />
-      <entry key="H1" value="103.2813551007661" />
-      <entry key="H2" value="127.3451231451296" />
-      <entry key="H4" value="164.14530439584576" />
-      <entry key="D1" value="235.33967665226723" />
-      <entry key="W1" value="254.52614465265253" />
+      <entry key="MS100" value="5.928685958960513E-4" />
+      <entry key="MS500" value="0.2267564839928584" />
+      <entry key="S2" value="0.8578090092773409" />
+      <entry key="S5" value="1.6069053111335774" />
+      <entry key="S10" value="2.375032029483341" />
+      <entry key="S30" value="4.456746034995327" />
+      <entry key="S60" value="7.620843323240803" />
+      <entry key="M2" value="12.907239143857323" />
+      <entry key="M5" value="25.692088330323" />
+      <entry key="M10" value="40.95611820358857" />
+      <entry key="M15" value="54.514682389376524" />
+      <entry key="M30" value="95.06426237573399" />
+      <entry key="H1" value="154.65147286588564" />
+      <entry key="H2" value="221.18070278645573" />
+      <entry key="H4" value="289.43023926552036" />
+      <entry key="D1" value="404.83963742513913" />
+      <entry key="W1" value="435.4495888212644" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
@@ -183,7 +192,7 @@
     "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "project.propVCSSupport.ChangelistConflict",
     "to.speed.mode.migration.done": "true",
     "vue.rearranger.settings.migration": "true"
   }
@@ -665,6 +674,10 @@
     <isAutomaticFoundErrors value="true" />
     <isAutomaticReloadCMake value="true" />
     <isAutomaticBootstrapAfterUpdate value="false" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Major refactor underway" />
+    <option name="LAST_COMMIT_MESSAGE" value="Major refactor underway" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

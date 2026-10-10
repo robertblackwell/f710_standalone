@@ -9,7 +9,7 @@
 #ifdef ROS2_MSGS
 using namespace sample_interfaces::msg;
 #else
-using namespace non_ros_msgs;
+using namespace pico_messages;
 #endif
 using namespace rbl;
 /**
@@ -18,7 +18,7 @@ using namespace rbl;
  * 
  * Serialize and Deserialize Functions
  * ===================================
- * These functions are only intended for use by ros2 nodes running on a Linux host.
+ * These functions are only intended for use by apps running on a Linux host.
  *  
  * Hence, Deserialize functions are only required for those messages that originate in the micro-controller
  * and are received by the host. They are:
@@ -29,7 +29,7 @@ using namespace rbl;
  * -    FirmwareStartupResponse
  * 
  * Deserialize functions convert a packet of bytes into a std::variant 
- * that holds one of a selection of ROS2 messasge structures.
+ * that holds one of a selection of messasge structures.
  * 
  * This variant structure is called an InputMessage
  */
@@ -130,16 +130,20 @@ typedef std::unique_ptr<OutputMessageVariant> OutputMessageVariant_Uptr;
  * and should not be avoided. 
 */
 void serialize(FirmwareRebootCmd& cmd, IoBuffer& buffer);
-void serialize(EchoCmd& cmd, IoBuffer& buffer);
-void serialize(LoadTestCmd& cmd, IoBuffer& buffer);
-void serialize(MotorPwmCmd& cmd, IoBuffer& buffer);
-void serialize(MotorRpmCmd& cmd, IoBuffer& buffer);
-void serialize(ReadEncodersCmd& cmd_response, IoBuffer& buffer);
+void serialize(const EchoCmd& cmd, IoBuffer& buffer);
+void serialize(const LoadTestCmd& cmd, IoBuffer& buffer);
+void serialize(const MotorPwmCmd& cmd, IoBuffer& buffer);
+void serialize(const MotorRpmCmd& cmd, IoBuffer& buffer);
+void serialize(const ReadEncodersCmd& cmd_response, IoBuffer& buffer);
 
 /**
  * Use this general serialize function 
 */
 void serialize(OutputMessageVariant& out_msg, IoBuffer& buffer);
 
+void serialize(const FirmwareStartupResponse& response, IoBuffer& buffer);
+void serialize(const FirmwareRebootCmd& cmd, IoBuffer& buffer);
+void serialize(const CmdResponse& response, IoBuffer& buffer);
+void serialize(const TextMsg& text_msg, IoBuffer& buffer);
 
 #endif

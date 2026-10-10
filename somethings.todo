@@ -1,0 +1,9 @@
+Organize repo:
+    this repo is disorganized. One cannot easily tell what is going on:
+        ☐ needs a better readme.md
+        ☐ the rbl stuff it is not clear if this is a library or part of this repo
+    message formats:
+        ☐ get tests working
+        ☐ put the code that creates the messages togeter with the decoder code
+        ☐ remove the use of std::variant from the message handling
+    

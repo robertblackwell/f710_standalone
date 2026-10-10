@@ -7,7 +7,7 @@
 #include <rbl/iobuffer.h>
 
 using IoBuffer = rbl::IoBuffer;
-
+using namespace pico_messages;
 // Message deserializer(IoBuffer& message_buffer)
 // {
 //     if(message_buffer.empty()){
@@ -249,7 +249,7 @@ bool deserialize(IoBuffer& buffer, InputMessageUPtrVariant& inmsg)
                 return false;
             },
     };
-    for(auto f : pv) {
+    for(const auto& f : pv) {
         if(f(buffer))
             return true;
     }
@@ -259,12 +259,33 @@ bool deserialize(IoBuffer& buffer, InputMessageUPtrVariant& inmsg)
 std::unique_ptr<InputMessageUPtrVariant> deserialize(IoBuffer& buffer)
 {
     auto imsgupt = std::make_unique<InputMessageUPtrVariant>();
-    auto flag = deserialize(buffer, *imsgupt);
-    if(!flag) {
+    if(auto flag = deserialize(buffer, *imsgupt); !flag) {
         return nullptr;
     }
     return imsgupt;
 }
+bool deserialize(IoBuffer& buffer, InputMessageUnion& inmsg)
+{
+    if (deserialize(buffer, inmsg.firmware_startup_response)) {
+        inmsg.tag = InputMessageVariantEnum::firmware_startup;
+        return true;
+    } else if (deserialize(buffer, inmsg.cmd_response)) {
+        inmsg.tag = InputMessageVariantEnum::cmd_response;
+        return true;
+    } else if (deserialize(buffer, inmsg.encoder_status)) {
+        inmsg.tag = InputMessageVariantEnum::encoder_status;
+        return true;
+    } else if (deserialize(buffer, inmsg.two_encoder_status)) {
+        inmsg.tag = InputMessageVariantEnum::two_encoder_status;
+        return true;
+    } else if (deserialize(buffer, inmsg.text_msg)) {
+        inmsg.tag = InputMessageVariantEnum::text_msg;
+        return true;
+    } else {
+        return  false;
+    }
+}
+
 
 /**
  * Serialize functions
@@ -272,29 +293,29 @@ std::unique_ptr<InputMessageUPtrVariant> deserialize(IoBuffer& buffer)
 void serialize(const FirmwareStartupResponse& response, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "1B %s", response.text.c_str());
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "1B %s", response.text.c_str());
     buffer.commit(len);
 
 }
 void serialize(const FirmwareRebootCmd& cmd, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "reset %s", cmd.dummy.c_str());
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "reset %s", cmd.dummy.c_str());
     buffer.commit(len);
 
 }
 void serialize(const CmdResponse& response, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "%s %s", (response.ok ? "OK": "FAILED"), response.text.c_str());
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "%s %s", (response.ok ? "OK": "FAILED"), response.text.c_str());
     buffer.commit(len);
 
 }
-void serialize(EchoCmd& cmd, IoBuffer& buffer)
+void serialize(const EchoCmd& cmd, IoBuffer& buffer)
 {
     buffer.clear();
     std::string result{};
-    for(auto s : cmd.text) {
+    for(const auto& s : cmd.text) {
         result +=  " " + s;
     }
     // auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "echo %s\n", result.c_str());
@@ -302,34 +323,34 @@ void serialize(EchoCmd& cmd, IoBuffer& buffer)
     // buffer.commit(len);
 
 }
-void serialize(LoadTestCmd& cmd, IoBuffer& buffer)
+void serialize(const LoadTestCmd& cmd, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "load %d %d %d", cmd.count, cmd.msg_length, cmd.msgs_per_second);
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "load %d %d %d", cmd.count, cmd.msg_length, cmd.msgs_per_second);
     buffer.commit(len);
 }
-void serialize(MotorPwmCmd& cmd, IoBuffer& buffer)
+void serialize(const MotorPwmCmd& cmd, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "pwm %f %f", cmd.left_motor_pwm, cmd.right_motor_pwm);
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "pwm %f %f", cmd.left_motor_pwm, cmd.right_motor_pwm);
     buffer.commit(len);
 }
-void serialize(MotorRpmCmd& cmd, IoBuffer& buffer)
+void serialize(const MotorRpmCmd& cmd, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "rpm %f %f", cmd.left_motor_rpm, cmd.right_motor_rpm);
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "rpm %f %f", cmd.left_motor_rpm, cmd.right_motor_rpm);
     buffer.commit(len);
 }
-void serialize(TextMsg& text_msg, IoBuffer& buffer)
+void serialize(const TextMsg& text_msg, IoBuffer& buffer)
 {
     buffer.clear();
     // auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "%s", cmd_response.text);
     buffer.append(text_msg.text);
 }
-void serialize(ReadEncodersCmd& cmd, IoBuffer& buffer)
+void serialize(const ReadEncodersCmd& cmd_response, IoBuffer& buffer)
 {
     buffer.clear();
-    auto len = snprintf((char*)buffer.space_ptr(), buffer.space_len(), "e %d", cmd.left_or_right);
+    const auto len = snprintf(static_cast<char *>(buffer.space_ptr()), buffer.space_len(), "e %d", cmd_response.left_or_right);
     buffer.commit(len);
 }
 
