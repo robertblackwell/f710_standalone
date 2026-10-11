@@ -2,19 +2,20 @@
 #include <cstdio>
 #include <thread>
 #include <climits>
-#include <rbl/f710_time.h>
-#include <rbl/f710_exceptions.h>
+#include <cmath>
+#include "f710_time.h"
+#include "f710_exceptions.h"
 #include "f710_utes.h"
 #include <rbl/std_format.h>
 #include <rbl/iobuffer.h>
 #include <pico_messages/msg_struct.h>
-#include <pico_messages/msgs.h>
-#include <bridge_lib/threaded/serial_link.h>
-#include <bridge_lib/threaded/outputter.h>
-#include <bridge_lib/serial_settings.h>
+#include <pico_messages/deserialize_response_msgs.h>
+// #include <bridge_lib/threaded/serial_link.h>
+// #include <bridge_lib/threaded/outputter.h>
+// #include <bridge_lib/serial_settings.h>
 #include <rbl/simple_exit_guard.h>
 
-using namespace bridge::threaded;
+// using namespace bridge::threaded;
 // using namespace rbl;
 // namespace f710 {
 //     IoBuffer::UPtr make_robot_pid_message();
@@ -37,8 +38,8 @@ IoBuffer::UPtr f710::make_robot_pwm_message(int left, int right)
 }
 IoBuffer::UPtr f710::make_robot_velocity_message(int left, int right)
 {
-    auto left_vel = ((float)(left) / (float)INT16_MAX) * 0.100;
-    auto right_vel = ((float)(right) / (float)INT16_MAX) * 0.100;
+    auto left_vel = (static_cast<float>(left) / static_cast<float>(INT16_MAX)) * 0.100;
+    auto right_vel = (static_cast<float>(right) / static_cast<float>(INT16_MAX)) * 0.100;
     IoBuffer::UPtr iob = std::make_unique<IoBuffer>(256);
     int len = snprintf(iob->get_first_char_ptr(), 256, "v %.6f %.6f \n ", left_vel, right_vel);
     printf("v %.6f %f \n ", left_vel, right_vel);
@@ -84,14 +85,36 @@ namespace {
     template<class... Ts> struct msg_overload : Ts... {using Ts::operator()...;};
 }
 
-void f710::handle_incoming_msg(std::function<void(std::string)> send_threadsafe, IoBuffer::UPtr iob_uptr)
+void f710::handle_incoming_msg(const std::function<void(std::string)>& send_threadsafe, IoBuffer::UPtr iob_uptr)
 
 {
-    
-    auto msg_uptr = deserialize(*iob_uptr);
-    if(!msg_uptr) {
+    pico_messages::ResponseMessageUnion msg_tmp{};
+    if(const auto flag = pico_messages::deserialize(*iob_uptr, msg_tmp); !flag) {
         throw std::runtime_error("invalid pico input message");
     }
+    // NOLINTNEXTLINE(bugprone-branch-clone)
+    switch (msg_tmp.tag) {
+        case pico_messages::ResponseMessageEnum::two_encoder_status: {
+                const auto left = msg_tmp.two_encoder_status.left.wheel_speed_mps;
+                const auto right = msg_tmp.two_encoder_status.right.wheel_speed_mps;
+                const auto fmtmsg = std_format("wheel speed m/s left: {} right: {} precent diff:  {}\n",
+                    left, right,
+                    100.0*((left - right/(left))));
+                send_threadsafe(fmtmsg);
+            }
+            break;
+        case pico_messages::ResponseMessageEnum::firmware_startup:
+        case pico_messages::ResponseMessageEnum::cmd_response:
+        case pico_messages::ResponseMessageEnum::text_msg:
+        case pico_messages::ResponseMessageEnum::encoder_status: {
+                const auto msg = std::string(iob_uptr->get_first_char_ptr());
+                send_threadsafe(msg);
+            }
+            break;
+        default:
+            break;
+    }
+#if 0
     auto default_action = [&](){
         std::string msg = std::string(iob_uptr->get_first_char_ptr());
         send_threadsafe(msg);
@@ -120,7 +143,7 @@ void f710::handle_incoming_msg(std::function<void(std::string)> send_threadsafe,
     }, *msg_uptr);
     #pragma GCC diagnostic pop
     // NOLINTEND(misc-unused-parameters))
-
+#endif
     // std::string msg = std::string(iob_uptr->get_first_char_ptr());
     iob_uptr = nullptr;
     // outputter.send_threadsafe(msg);

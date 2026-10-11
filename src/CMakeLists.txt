@@ -30,6 +30,7 @@ target_compile_options(applib
 # add_subdirectory(f710-v1)
 # add_subdirectory(f710-v2)
 add_subdirectory(pico_messages)
+add_subdirectory(f710-common)
 add_subdirectory(rbl)
 add_subdirectory(app_asio)
 add_subdirectory(app_threaded)

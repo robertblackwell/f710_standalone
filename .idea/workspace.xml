@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="BackendCodeEditorMiscSettings">
-    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="6" type="long" />
     <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
   </component>
-  <component name="CMakePresetLoader">{
-  &quot;useNewFormat&quot;: true
-}</component>
+  <component name="CMakePresetLoader"><![CDATA[{
+  "useNewFormat": true
+}]]></component>
   <component name="CMakeProjectFlavorService">
     <option name="flavorId" value="CMakePlainProjectFlavor" />
   </component>
@@ -18,21 +17,22 @@
   </component>
   <component name="CMakeRunConfigurationManager">
     <generated>
+      <config projectName="F710Project" targetName="f710_asio_controller" />
+      <config projectName="F710Project" targetName="f710_threaded_demo" />
+      <config projectName="F710Project" targetName="boost_optional" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="f710_asio_demo" />
       <config projectName="F710Project" targetName="boost_context" />
       <config projectName="F710Project" targetName="boost_assert" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="boost_container" folderName="Dependencies" />
       <config projectName="F710Project" targetName="boost_date_time" folderName="Dependencies" />
+      <config projectName="F710Project" targetName="test_msgs" />
       <config projectName="F710Project" targetName="boost_fiber_numa" />
-      <config projectName="F710Project" targetName="f710_controller_v1" />
-      <config projectName="F710Project" targetName="f710_asio_controller" />
-      <config projectName="F710Project" targetName="f710_asio_demo" />
+      <config projectName="F710Project" targetName="boost_atomic" folderName="Dependencies" />
       <config projectName="F710Project" targetName="applib" />
       <config projectName="F710Project" targetName="boost_unordered" folderName="Dependencies" />
       <config projectName="F710Project" targetName="boost_fiber" />
+      <config projectName="F710Project" targetName="f710_controller_v1" />
       <config projectName="F710Project" targetName="boost_filesystem" folderName="Dependencies" />
-      <config projectName="F710Project" targetName="boost_container" folderName="Dependencies" />
-      <config projectName="F710Project" targetName="boost_atomic" folderName="Dependencies" />
-      <config projectName="F710Project" targetName="f710_threaded_demo" />
-      <config projectName="F710Project" targetName="boost_optional" folderName="Dependencies" />
     </generated>
   </component>
   <component name="CMakeSettings">
@@ -41,29 +41,92 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="Major refactor underway">
+    <list default="true" id="50dd24bb-9e6f-408b-a64f-af580f20dfbc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/f710-common/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pico_messages/command_msg_struct.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pico_messages/response_msg_struct.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pico_messages/serialize_command_msgs.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/pico_messages/serialize_command_msgs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/editor.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/asio_reader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/asio_reader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/asio_reader.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/asio_reader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/demo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/demo.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/model.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/model.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/model.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/model.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/model_defines.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/model_defines.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/outputter.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/outputter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_asio/serial_bridge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_asio/serial_bridge.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/demo.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/demo.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/f710.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/f710.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/f710.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/f710.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/outputter.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/outputter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app_threaded/serial_link.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/app_threaded/serial_link.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/asio/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/asio/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/asio/outputter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/asio/outputter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/asio/outputter.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/asio/outputter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/asio/serial_bridge.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/asio/serial_bridge.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/asio/serial_bridge.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/asio/serial_bridge.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/fd_functions.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/fd_functions.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/fd_functions.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/fd_functions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/fiber/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/fiber/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/serial_settings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/serial_settings.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/serial_settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/serial_settings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/threaded/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/threaded/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/threaded/outputter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/threaded/outputter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/threaded/outputter.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/threaded/outputter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/threaded/serial_link.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/threaded/serial_link.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bridge_lib/threaded/serial_link.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/threaded/serial_link.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_exceptions.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_exceptions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710_helpers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_original.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710_original.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/f710_time.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710_time.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/notes.md" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/notes.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v1/readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/readme.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/asio/asio_reader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/asio/asio_reader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/asio/asio_reader.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/asio/asio_reader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/f710_exceptions.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/f710_exceptions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/f710_helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/f710_helpers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/f710_helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/f710_helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/f710_original.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/f710_original.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/f710_time.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/f710_time.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/main_asio.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/main_asio.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/model.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/model.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/model.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/model.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/model_defines.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/model_defines.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/threaded/reader.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/threaded/reader.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/threaded/reader.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/threaded/reader.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/f710-v2/timeout_context.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v2/timeout_context.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msg_struct.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/msgs.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/common/unittest.c" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/common/unittest.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/common/unittest.h" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/common/unittest.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_buffers/test_buffer_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_buffers/test_buffer_main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_first_guess/test_first_guess.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_first_guess/test_first_guess.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_msgs/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_msgs/test_msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_queue/test_queue_main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_queue/test_queue_main.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/a.out" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/a.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/json.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/json.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/tests_non_ros/test_with_pico/test_with_pico.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_with_pico/test_with_pico.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/deserialize_response_msgs.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/pico_messages/msgs.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/pico_messages/deserialize_response_msgs.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/rbl/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_exceptions.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710_exceptions.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_helpers.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_helpers.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_helpers.h" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/f710-v1/f710_helpers.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_time.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_time.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_utes.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_utes.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/f710_utes.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/f710_utes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/serial_settings.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tobe_assessed/bridge_lib/serial_settings.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/rbl/serial_settings.h" beforeDir="false" afterPath="$PROJECT_DIR$/src/f710-common/serial_settings.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,15 +137,18 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="20275" />
+    <option name="cachedIndexableFilesCount" value="20277" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///dummy.cpp" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="MacroExpansionManager">
-    <option name="directoryName" value="yrP7Hxbf" />
+    <option name="directoryName" value="himABgf3" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -90,84 +156,83 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.5251109446314882E-191" />
-      <entry key="MS500" value="8.334063311033338E-39" />
-      <entry key="S2" value="4.846167121547248E-10" />
-      <entry key="S5" value="3.007615791621881E-4" />
-      <entry key="S10" value="0.02971544475926063" />
-      <entry key="S30" value="1.0495346466023308" />
-      <entry key="S60" value="3.657108250935281" />
-      <entry key="M2" value="8.299976508758135" />
-      <entry key="M5" value="18.94151853033888" />
-      <entry key="M10" value="31.440299858140754" />
-      <entry key="M15" value="43.087669054605605" />
-      <entry key="M30" value="80.01112705675114" />
-      <entry key="H1" value="136.06264295149427" />
-      <entry key="H2" value="199.68935171802963" />
-      <entry key="H4" value="265.64659198327445" />
-      <entry key="D1" value="377.7981139445533" />
-      <entry key="W1" value="407.5956854811623" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="1.2051846998344448E-66" />
+      <entry key="S2" value="3.330435332558918E-17" />
+      <entry key="S5" value="3.028305413965719E-7" />
+      <entry key="S10" value="8.11864608009266E-4" />
+      <entry key="S30" value="0.18664988096030707" />
+      <entry key="S60" value="0.7678260535767059" />
+      <entry key="M2" value="2.2183407254958722" />
+      <entry key="M5" value="9.646142774227036" />
+      <entry key="M10" value="24.130539237945964" />
+      <entry key="M15" value="37.529949669159784" />
+      <entry key="M30" value="68.37398442455657" />
+      <entry key="H1" value="101.84906209472577" />
+      <entry key="H2" value="128.6378035539285" />
+      <entry key="H4" value="146.0300951842065" />
+      <entry key="D1" value="163.21941864242189" />
+      <entry key="W1" value="166.45236915491677" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0000000000000082" />
-      <entry key="MS500" value="1.0015222495920175" />
-      <entry key="S2" value="1.2264765084318683" />
-      <entry key="S5" value="1.8542737869728683" />
-      <entry key="S10" value="2.528776139308432" />
-      <entry key="S30" value="3.566161669899253" />
-      <entry key="S60" value="4.123027334431201" />
-      <entry key="M2" value="4.742414409459865" />
-      <entry key="M5" value="6.854742365642441" />
-      <entry key="M10" value="9.598631191240033" />
-      <entry key="M15" value="11.497135653388938" />
-      <entry key="M30" value="15.104518077641814" />
-      <entry key="H1" value="18.624208653695323" />
-      <entry key="H2" value="21.51391037235278" />
-      <entry key="H4" value="23.797363464812996" />
-      <entry key="D1" value="27.044517910492416" />
-      <entry key="W1" value="27.85435870126472" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="4.745891182475239E-74" />
+      <entry key="S2" value="4.667447525626633E-19" />
+      <entry key="S5" value="4.6519150742773445E-8" />
+      <entry key="S10" value="2.156829866790024E-4" />
+      <entry key="S30" value="0.059972068522523965" />
+      <entry key="S60" value="0.24608734487059214" />
+      <entry key="M2" value="0.5294980146874643" />
+      <entry key="M5" value="1.028140943453421" />
+      <entry key="M10" value="1.5163961433051467" />
+      <entry key="M15" value="1.9168337381892753" />
+      <entry key="M30" value="3.0274113349044787" />
+      <entry key="H1" value="4.632189706129771" />
+      <entry key="H2" value="6.230543892071367" />
+      <entry key="H4" value="7.417049137105938" />
+      <entry key="D1" value="8.702502363494252" />
+      <entry key="W1" value="8.956579896705744" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="5.928685958960513E-4" />
-      <entry key="MS500" value="0.2267564839928584" />
-      <entry key="S2" value="0.8578090092773409" />
-      <entry key="S5" value="1.6069053111335774" />
-      <entry key="S10" value="2.375032029483341" />
-      <entry key="S30" value="4.456746034995327" />
-      <entry key="S60" value="7.620843323240803" />
-      <entry key="M2" value="12.907239143857323" />
-      <entry key="M5" value="25.692088330323" />
-      <entry key="M10" value="40.95611820358857" />
-      <entry key="M15" value="54.514682389376524" />
-      <entry key="M30" value="95.06426237573399" />
-      <entry key="H1" value="154.65147286588564" />
-      <entry key="H2" value="221.18070278645573" />
-      <entry key="H4" value="289.43023926552036" />
-      <entry key="D1" value="404.83963742513913" />
-      <entry key="W1" value="435.4495888212644" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0000002596730442" />
+      <entry key="S10" value="1.0009052665448321" />
+      <entry key="S30" value="1.237584541734162" />
+      <entry key="S60" value="1.9959515080789043" />
+      <entry key="M2" value="3.7271633455060966" />
+      <entry key="M5" value="11.649887785749723" />
+      <entry key="M10" value="26.61900767765328" />
+      <entry key="M15" value="40.41721607617473" />
+      <entry key="M30" value="72.37152792899546" />
+      <entry key="H1" value="107.4567454262548" />
+      <entry key="H2" value="135.8518959362542" />
+      <entry key="H4" value="154.43748398292527" />
+      <entry key="D1" value="172.92006643146257" />
+      <entry key="W1" value="176.40867742035738" />
     </decayedShown>
   </component>
   <component name="ProjectApplicationVersion">
     <option name="ide" value="CLion" />
-    <option name="majorVersion" value="2024" />
-    <option name="minorVersion" value="3" />
+    <option name="majorVersion" value="2026" />
+    <option name="minorVersion" value="2.1" />
     <option name="productBranch" value="Classic" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2qMmj0G05FDDGHRbJiFv68cCDq8" />
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="3KXQMhWUmbZ4ImCrKWgbAM0gGK4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "CMake Application.f710_controller_v1.executor": "Run",
-    "CMake Application.f710_controller_v2.executor": "Debug",
-    "CMake Application.serial_monitor.executor": "Run",
+    "CMake Application.test_msgs.executor": "Debug",
     "CidrDebugProfileConversion": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",
     "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
@@ -175,327 +240,29 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.readMode.enableVisualFormatting": "true",
     "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "RunOnceActivity.west.config.association.type.startup.service": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "SHELLCHECK.PATH": "I do mind",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "codeWithMe.voiceChat.enabledByDefault": "false",
     "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "ctest.advertisement.all.test.configuration.is.created": "true",
     "git-widget-placeholder": "standalone-debian",
     "junie.onboarding.icon.badge.shown": "true",
-    "last_opened_file_path": "/home/robert/Projects/f710-standalone",
+    "last_opened_file_path": "/home/robert/Projects/f710-standalone/src/pico_messages",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.jshint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.jshint": "",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "project.propVCSSupport.ChangelistConflict",
-    "to.speed.mode.migration.done": "true",
-    "vue.rearranger.settings.migration": "true"
+    "to.speed.mode.migration.done": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/twist_drive" />
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/serial_control_gui" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$" />
-      <recent name="$PROJECT_DIR$/vendor" />
+      <recent name="$PROJECT_DIR$/src/pico_messages" />
     </key>
   </component>
-  <component name="RunManager" selected="CMake Application.f710_controller_v1">
-    <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousSubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousSubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousSubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousSubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ContinuousUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ContinuousUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Continuous" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Continuous" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Experimental" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Experimental" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalSubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalSubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalSubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalSubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ExperimentalUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="ExperimentalUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Experimental" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Experimental" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Nightly" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Nightly" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyBuild" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyBuild" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyConfigure" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyConfigure" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyCoverage" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyCoverage" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyMemCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyMemCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyMemoryCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyMemoryCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyMemoryCheck" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyMemoryCheck" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyStart" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyStart" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlySubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlySubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlySubmit" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlySubmit" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyTest" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyTest" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="NightlyUpdate" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="NightlyUpdate" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Nightly" type="CMakeRunConfiguration" factoryName="Application" folderName="CTestDashboardTargets" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="Nightly" CONFIG_NAME="Debug">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="CMake Application.test_msgs">
     <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="applib" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="applib" CONFIG_NAME="Debug">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -570,50 +337,23 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="f710_controller_v1" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_controller_v1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_controller_v1">
-      <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="f710_threaded_demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_threaded_demo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_threaded_demo">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
-    <configuration name="f710_v1_threaded_demo" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="f710_v1_threaded_demo" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="f710_v1_threaded_demo">
+    <configuration name="test_msgs" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="F710Project" TARGET_NAME="test_msgs" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="F710Project" RUN_TARGET_NAME="test_msgs">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All CTest" type="CTestRunConfiguration" factoryName="CTestRun" PROGRAM_PARAMS="--extra-verbose" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$CMakeCurrentLocalGenerationDir$" PASS_PARENT_ENVS_2="true" RUN_PATH="$CTestCurrentExecutableName$" EXPLICIT_BUILD_TARGET_NAME="all" TEST_MODE="SUITE_TEST">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="BeforeTestRunTask" enabled="true" />
+      </method>
+    </configuration>
     <list>
-      <item itemvalue="CMake Application.Continuous" />
-      <item itemvalue="CMake Application.ContinuousBuild" />
-      <item itemvalue="CMake Application.ContinuousConfigure" />
-      <item itemvalue="CMake Application.ContinuousCoverage" />
-      <item itemvalue="CMake Application.ContinuousMemCheck" />
-      <item itemvalue="CMake Application.ContinuousStart" />
-      <item itemvalue="CMake Application.ContinuousSubmit" />
-      <item itemvalue="CMake Application.ContinuousTest" />
-      <item itemvalue="CMake Application.ContinuousUpdate" />
-      <item itemvalue="CMake Application.Experimental" />
-      <item itemvalue="CMake Application.ExperimentalBuild" />
-      <item itemvalue="CMake Application.ExperimentalConfigure" />
-      <item itemvalue="CMake Application.ExperimentalCoverage" />
-      <item itemvalue="CMake Application.ExperimentalMemCheck" />
-      <item itemvalue="CMake Application.ExperimentalStart" />
-      <item itemvalue="CMake Application.ExperimentalSubmit" />
-      <item itemvalue="CMake Application.ExperimentalTest" />
-      <item itemvalue="CMake Application.ExperimentalUpdate" />
-      <item itemvalue="CMake Application.Nightly" />
-      <item itemvalue="CMake Application.NightlyBuild" />
-      <item itemvalue="CMake Application.NightlyConfigure" />
-      <item itemvalue="CMake Application.NightlyCoverage" />
-      <item itemvalue="CMake Application.NightlyMemCheck" />
-      <item itemvalue="CMake Application.NightlyMemoryCheck" />
-      <item itemvalue="CMake Application.NightlyStart" />
-      <item itemvalue="CMake Application.NightlySubmit" />
-      <item itemvalue="CMake Application.NightlyTest" />
-      <item itemvalue="CMake Application.NightlyUpdate" />
       <item itemvalue="CMake Application.boost_assert" />
       <item itemvalue="CMake Application.boost_atomic" />
       <item itemvalue="CMake Application.boost_container" />
@@ -629,40 +369,36 @@
       <item itemvalue="CMake Application.f710_asio_demo" />
       <item itemvalue="CMake Application.f710_controller_v1" />
       <item itemvalue="CMake Application.f710_threaded_demo" />
+      <item itemvalue="CMake Application.test_msgs" />
+      <item itemvalue="CTest Application.All CTest" />
     </list>
   </component>
-  <component name="SelectedDebugProfileService">{
-  &quot;profileIdByStamp&quot;: [
+  <component name="SelectedDebugProfileService"><![CDATA[{
+  "profileIdByStamp": [
     {
-      &quot;first&quot;: {
-        &quot;##RUN_CONFIGURATION##&quot;: &quot;CMake Application.f710_controller_v1&quot;,
-        &quot;cmake&quot;: &quot;CMakeBuildProfile:Debug&quot;
+      "first": {
+        "##RUN_CONFIGURATION##": "CMake Application.f710_asio_controller",
+        "cmake": "CMakeBuildProfile:Debug"
       },
-      &quot;second&quot;: &quot;9badbdf3-81f7-46cd-8b48-fee45102d7fe&quot;
+      "second": "9badbdf3-81f7-46cd-8b48-fee45102d7fe"
+    },
+    {
+      "first": {
+        "##RUN_CONFIGURATION##": "CMake Application.test_msgs",
+        "cmake": "CMakeBuildProfile:Debug"
+      },
+      "second": "9badbdf3-81f7-46cd-8b48-fee45102d7fe"
     }
   ],
-  &quot;modificationCount&quot;: 8
-}</component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  "modificationCount": 4
+}]]></component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="d59c7b0a-9f72-49d0-bd08-d10e364a7862" name="Changes" comment="" />
-      <created>1734480950335</created>
+      <changelist id="50dd24bb-9e6f-408b-a64f-af580f20dfbc" name="Changes" comment="" />
+      <created>1791701387872</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1734480950335</updated>
-      <workItem from="1734480951896" duration="6966000" />
-      <workItem from="1734502882877" duration="325000" />
-      <workItem from="1734585495942" duration="18130000" />
-      <workItem from="1735006699984" duration="6279000" />
-      <workItem from="1735701235255" duration="3974000" />
-      <workItem from="1735709169143" duration="3756000" />
-      <workItem from="1735713585354" duration="665000" />
-      <workItem from="1735714297361" duration="892000" />
-      <workItem from="1735720873697" duration="294000" />
-      <workItem from="1735721350670" duration="2125000" />
-      <workItem from="1735967631804" duration="1573000" />
-      <workItem from="1736117619001" duration="8124000" />
+      <updated>1791701387872</updated>
     </task>
     <servers />
   </component>
@@ -675,48 +411,30 @@
     <isAutomaticReloadCMake value="true" />
     <isAutomaticBootstrapAfterUpdate value="false" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Major refactor underway" />
-    <option name="LAST_COMMIT_MESSAGE" value="Major refactor underway" />
-  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/motion_control/motion_control.cpp</url>
-          <line>107</line>
+          <url>file://$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp</url>
+          <line>81</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/serial_monitor/background_thread.cpp</url>
-          <line>62</line>
+          <url>file://$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp</url>
+          <line>71</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp</url>
+          <line>70</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/bridge_lib/serial_link.cpp</url>
+          <url>file://$PROJECT_DIR$/tests/tests_pico_messages/test_msgs/test_msgs.cpp</url>
           <line>68</line>
           <option name="timeStamp" value="4" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/bridge_lib/serial_link.cpp</url>
-          <line>108</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/serial_monitor/main.cpp</url>
-          <line>128</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/twist_drive/twist_drive.h</url>
-          <line>8</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

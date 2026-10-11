@@ -1,27 +1,10 @@
 #ifndef f710_asio_reader_H
 #define f710_asio_reader_H
-#include <memory>
-#include <cstring>
 #include <string>
-#include <cinttypes>
 #include <functional>
-#include <dirent.h>
 #include <boost/asio.hpp>
-#include <fcntl.h>
-#include <climits>
-#include <vector>
-#include <optional>
-#include <assert.h>
-#include <sys/time.h>
-#include <linux/input.h>
 #include <linux/joystick.h>
-#include <cmath>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <rbl/f710_helpers.h>
-#include <rbl/f710_exceptions.h>
-#include <rbl/f710_time.h>
-#include "model.h"
+#include <f710-common/f710_helpers.h>
 
 namespace f710 {
 

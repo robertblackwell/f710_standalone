@@ -1,23 +1,9 @@
 #ifndef f710_H
 #define f710_H
-#include <memory>
-#include <cstring>
 #include <string>
-#include <cinttypes>
 #include <functional>
-#include <dirent.h>
-#include <fcntl.h>
-#include <climits>
-#include <vector>
-#include <optional>
-#include <sys/time.h>
-#include <linux/input.h>
-#include <linux/joystick.h>
-#include <cmath>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <rbl/f710_time.h>
-#include <rbl/f710_exceptions.h>
+#include <f710-common/f710_time.h>
+#include <f710-common/f710_exceptions.h>
 
 namespace f710 {
     struct StreamDevice;

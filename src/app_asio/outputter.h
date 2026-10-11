@@ -4,9 +4,7 @@
 #include <queue>
 #include <memory>
 #include <boost/asio.hpp>
-#include <rbl/queue.h>
 #include <rbl/iobuffer.h>
-#include <rbl/cv_queue.h>
 
 namespace outputter::asio {
 class Outputter

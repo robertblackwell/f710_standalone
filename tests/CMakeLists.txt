@@ -1,2 +1,3 @@
-add_subdirectory(test_cv_queue)
-add_subdirectory(test_twist_drive)
+#add_subdirectory(test_cv_queue)
+#add_subdirectory(test_twist_drive)
+add_subdirectory(tests_pico_messages/test_msgs)

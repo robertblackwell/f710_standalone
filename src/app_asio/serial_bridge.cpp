@@ -10,7 +10,7 @@
 #define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
 #include "serial_bridge.h"
-#include <bridge_lib/serial_settings.h>
+#include <f710-common/serial_settings.h>
 
 #define CARRIAGE_RETURN '\r'
 #define LINE_FEED '\n'

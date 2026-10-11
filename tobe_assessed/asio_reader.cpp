@@ -1,30 +1,8 @@
-#include "f710_helpers.h"
-#include "f710_time.h"
-#include "f710_exceptions.h"
-#include "asio_reader.h"
-#include "model_defines.h"
-#include <assert.h>
-#include <cinttypes>
-#include <climits>
-#include <cstring>
-#include <dirent.h>
-#include <fcntl.h>
-#include <memory>
-#include <optional>
-#include <rbl/simple_exit_guard.h>
+#include <f710-common/f710_exceptions.h>
+#include "../src/app_asio/asio_reader.h"
 #include <string>
-#include <vector>
-
-#include <sys/time.h>
-#include <linux/input.h>
 #include <linux/joystick.h>
 #include <cmath>
-#include <sys/stat.h>
-#include <unistd.h>
-#include <fcntl.h>
-#include <assert.h>
-#include <functional>
-#include <rbl/logger.h>
 
 
 

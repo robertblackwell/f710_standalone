@@ -1,29 +1,13 @@
 
 
 #include "model.h"
-#include <rbl/f710_time.h>
-// #include "f710_helpers.h"
-// #include "reader.h"
+#include <f710-common/f710_time.h>
 #include <assert.h>
-// #include <boost/asio/io_context.hpp>
-#include <cinttypes>
-#include <climits>
-#include <cmath>
-#include <cstring>
-#include <dirent.h>
-#include <fcntl.h>
 #include <functional>
 #include <linux/input.h>
 #include <linux/joystick.h>
-#include <memory>
-#include <optional>
 #include <rbl/logger.h>
-#include <rbl/simple_exit_guard.h>
-#include <string>
-#include <sys/stat.h>
-#include <sys/time.h>
-#include <unistd.h>
-#include <vector>
+
 f710::AxisDevice::AxisDevice(int eventid) : event_number(eventid) {
     is_new_event = false;
     latest_event_time = 0;

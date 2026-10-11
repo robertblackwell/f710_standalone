@@ -2,16 +2,14 @@
 #include <cstdio>
 #include <thread>
 #include <climits>
-#include <rbl/f710_time.h>
-#include <rbl/f710_exceptions.h>
-#include <rbl/f710_utes.h>
+#include <f710-common/f710_time.h>
+#include <f710-common/f710_exceptions.h>
+#include <f710-common/f710_utes.h>
 #include "f710.h"
 #include <rbl/std_format.h>
 #include <rbl/iobuffer.h>
-#include <pico_messages/msg_struct.h>
-#include <pico_messages/msgs.h>
-#include <bridge_lib/threaded/serial_link.h>
-#include <bridge_lib/threaded/outputter.h>
+#include "serial_link.h"
+#include "outputter.h"
 
 using namespace bridge::threaded;
 using namespace f710;

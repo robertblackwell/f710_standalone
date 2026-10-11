@@ -1,24 +1,9 @@
 #ifndef H_f710_model_H
 #define H_f710_model_H
-#include <memory>
-#include <cstring>
-#include <string>
 #include <cinttypes>
-#include <functional>
-#include <dirent.h>
-#include <fcntl.h>
-#include <climits>
-#include <vector>
-#include <optional>
-#include <assert.h>
-#include <sys/time.h>
 #include <linux/input.h>
 #include <linux/joystick.h>
 #include <cmath>
-#include <sys/stat.h>
-#include <unistd.h>
-// #include "f710_time.h"
-// #include "f710_exceptions.h"
 namespace f710 {
 
     /**

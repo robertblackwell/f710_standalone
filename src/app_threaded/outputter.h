@@ -1,8 +1,6 @@
 #ifndef F710_OUTPUTTER_H
 #define F710_OUTPUTTER_H
 #include <string>
-#include <rbl/queue.h>
-#include <rbl/iobuffer.h>
 #include <rbl/cv_queue.h>
 
 namespace bridge::threaded {

@@ -1,4 +1,4 @@
-target_sources(applib PRIVATE 
-    msg_struct.h
-    msgs.cpp
+target_sources(applib PRIVATE
+        response_msg_struct.h
+        deserialize_response_msgs.cpp
 )

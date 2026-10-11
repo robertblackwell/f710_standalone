@@ -11,14 +11,17 @@ message(" c compiler ${CMAKE_C_COMPILER}")
 find_package(PkgConfig REQUIRED)
 
 set(CMAKE_BUILD_TYPE Debug)
-set(F710_DIR ${PROJECT_SOURCE_DIR}/f710-v1)
-set(RBL_DIR ${PROJECT_SOURCE_DIR}/rbl)
-set(BRIDGE_LIB_DIR ${PROJECT_SOURCE_DIR}/bridge_lib)
-set(MOTION_CONTROL_DIR ${PROJECT_SOURCE_DIR}/motion_control)
-set(TWIST_DRIVE_DIR ${PROJECT_SOURCE_DIR}/twist_drive)
-set(NON_ROS_MSGS_DIR ${PROJECT_SOURCE_DIR}/non_ros_messages)
-set(JSONCONS_INCLUDE_DIR vendor/include)
-
+#set(F710_DIR ${PROJECT_SOURCE_DIR}/f710-v1)
+set(RBL_DIR ${PROJECT_SOURCE_DIR}/src/rbl)
+#set(BRIDGE_LIB_DIR ${PROJECT_SOURCE_DIR}/bridge_lib)
+#set(MOTION_CONTROL_DIR ${PROJECT_SOURCE_DIR}/motion_control)
+#set(TWIST_DRIVE_DIR ${PROJECT_SOURCE_DIR}/twist_drive)
+set(PICO_MESSAGES_DIR ${PROJECT_SOURCE_DIR}/src/pico_messages)
+set(JSONCONS_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/vendor/include)
+set(SRC_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/src)
+message("PICO_MESSAGES_DIR     ${PICO_MESSAGES_DIR}")
+message("JSONCONS_INCLUDE_DIR  ${JSONCONS_INCLUDE_DIR}")
+message("SRC_INCLUDE_DIR       ${SRC_INCLUDE_DIR}")
 # ============================================================================
 # LOCAL BOOST DEPENDENCY INTEGRATION (ASIO & FIBER)
 # ============================================================================
@@ -41,7 +44,7 @@ else()
 endif()
 
 # Restore your project's testing configuration state
-set(BUILD_TESTING ${BUILD_TESTING_SAVED} CACHE BOOL "" FORCE)
+#set(BUILD_TESTING ${BUILD_TESTING_SAVED} CACHE BOOL "" FORCE)
 
 # ============================================================================
 # PROJECT SUBDIRECTORIES & TESTING CONFIGURATIONS
@@ -52,6 +55,7 @@ include(CTest)
 enable_testing()
 
 add_subdirectory(src)
+add_subdirectory(tests)
 
 
 # 3. Build the apps

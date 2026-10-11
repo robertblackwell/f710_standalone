@@ -1,6 +1,6 @@
 #include "f710.h"
-#include <rbl/f710_helpers.h>
-#include <rbl/f710_exceptions.h>
+#include <f710-common/f710_helpers.h>
+#include <f710-common/f710_exceptions.h>
 int main() {
     try {
         f710::F710 logitech_f710{"js0"};

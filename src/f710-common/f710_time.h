@@ -1,25 +1,13 @@
 #ifndef f710_TIME_H
 #define f710_TIME_H
 
-// #include "f710.h"
-#include <memory>
-#include <cstring>
-#include <string>
 #include <cinttypes>
 
 #include <dirent.h>
-#include <fcntl.h>
-#include <climits>
-#include <vector>
-#include <optional>
 #include <sys/time.h>
 #include <linux/input.h>
-#include <linux/joystick.h>
-#include <cmath>
 #include <sys/stat.h>
-#include <unistd.h>
 #include <chrono>
-#include <ctime>
 
 namespace f710 {
 #if 0

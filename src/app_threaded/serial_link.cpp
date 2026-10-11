@@ -8,7 +8,7 @@
 #define RBL_LOG_ENABLED
 #define RBL_LOG_ALLOW_GLOBAL
 #include <rbl/logger.h>
-#include <rbl/serial_settings.h>
+#include <f710-common/serial_settings.h>
 #include "serial_link.h"
 
 #define CARRIAGE_RETURN '\r'
